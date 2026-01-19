@@ -13,13 +13,14 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function create(): View
+    public function create()
     {
-        return view('admin.auth.login');
+        return view('auth.admin_login');
     }
 
     public function store(Request $request): RedirectResponse
     {
+        
         $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
             'password' => ['required', 'string'],
