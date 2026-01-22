@@ -1,3 +1,7 @@
+command to make ..... Migration, controller, resource.....
+php artisan make:model Model_name -mcr
+
+
 Venue Management
 
 Sea Pearl Resort
