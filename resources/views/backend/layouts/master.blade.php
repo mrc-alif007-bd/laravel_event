@@ -44,6 +44,8 @@
     <!-- END wrapper -->
 
 
+    @include ("backend.layouts.footer")
+
     @yield("scripts")
 
 </body>
