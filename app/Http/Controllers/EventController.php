@@ -12,7 +12,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('backend.ad.event_list');
+        $events = Event::all();
+        return view('backend.events.event_list', compact('events'));
     }
 
     /**
@@ -20,7 +21,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.events.add_events');
     }
 
     /**
@@ -28,7 +29,42 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //.........Validetion........
+        $request->validate(
+            [
+                'e_name' => 'required|min:3|max:10',
+                'category' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'image' => 'required|mimes:jpg,png,pdf,jpeg|max:2048',
+            ]
+        );
+
+        $product_img = '';
+        if ($request->image == null) {
+            $product_img = 'product_image/noimage.jpg';
+        } else {
+            $product_img = request()->image->move(
+                'product_image',
+                $request->image->getClientoriginalName()
+            );
+        }
+        // dd($product_img);
+
+        //.....:::::::::....... Data....::::::::.......
+        //dd($request);
+        
+        $data = [
+            'category_id' => $request->category,
+            'name' => $request->e_name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $product_img,
+        ];
+        //dd($data);
+
+        Event::create($data);
+        return redirect()->route('event.index')->with('success', 'Event added');
     }
 
     /**
