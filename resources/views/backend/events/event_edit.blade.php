@@ -32,7 +32,7 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h6 class="page-title">Event Edit Form </h6>
+                        <h6 class="page-title">Event Add Form </h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{url('')}}/#">Veltrix</a></li>
                             <li class="breadcrumb-item"><a href="{{url('')}}/#">Forms</a></li>
@@ -66,7 +66,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Add Event</h4>
+                            <h4 class="card-title">Edit Event</h4>
                             <p class="card-title-desc">DataTables has most features enabled by
                                 default, so all you need to do to use it with your own tables is to call
                                 the construction function: <code>$().DataTable();</code>.
@@ -124,17 +124,7 @@
 
 
 
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    © <script>
-                        document.write(new Date().getFullYear())
-                    </script> Veltrix<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand.</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
 
 </div>
 @endsection

@@ -80,7 +80,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+         return view('backend.events.event_edit');
     }
 
     /**
@@ -96,6 +96,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('event.index')->with('success','Successfully Deleted');
+        //return view('backend.events.event_edit');
     }
 }
