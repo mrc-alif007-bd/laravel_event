@@ -40,16 +40,16 @@ class EventController extends Controller
             ]
         );
 
-        $product_img = '';
+        $event_img = '';
         if ($request->image == null) {
-            $product_img = 'product_image/noimage.jpg';
+            $event_img = 'event_image/noimage.jpg';
         } else {
-            $product_img = request()->image->move(
-                'product_image',
+            $event_img = request()->image->move(
+                'event_image',
                 $request->image->getClientoriginalName()
             );
         }
-        // dd($product_img);
+        // dd(event_img//$product_img);
 
         //.....:::::::::....... Data....::::::::.......
         //dd($request);
@@ -59,7 +59,7 @@ class EventController extends Controller
             'name' => $request->e_name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $product_img,
+            'image' => $event_img,
         ];
         //dd($data);
 
@@ -80,7 +80,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('backend.events.event_edit', compact('event'));
     }
 
     /**
@@ -88,7 +88,42 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+         //.........Validetion........
+        $request->validate(
+            [
+                'e_name' => 'required|min:3|max:10',
+                'category' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'image' => 'required|mimes:jpg,png,pdf,jpeg|max:2048',
+            ]
+        );
+
+        $event_img = '';
+        if ($request->image == null) {
+            $event_img = 'event_image/noimage.jpg';
+        } else {
+            $event_img = request()->image->move(
+                'event_image',
+                $request->image->getClientoriginalName()
+            );
+        }
+        // dd(event_img//$product_img);
+
+        //.....:::::::::....... Data....::::::::.......
+        //dd($request);
+        
+        $u_data = [
+            'category_id' => $request->category,
+            'name' => $request->e_name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $event_img,
+        ];
+        //dd($data);
+
+        $event->update($u_data);
+        return redirect()->route('event.index')->with('success', 'Event Updated');
     }
 
     /**
@@ -96,6 +131,10 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        //  dd($event->image);
+         $imagePath=public_path($event->image);
+         unlink($imagePath);
+        $event->delete();
+        return redirect()->route('event.index')->with('success','Successfully Deleted');
     }
 }

@@ -32,7 +32,7 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h6 class="page-title">Event Add Form </h6>
+                        <h6 class="page-title">Event Edit Form </h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{url('')}}/#">Veltrix</a></li>
                             <li class="breadcrumb-item"><a href="{{url('')}}/#">Forms</a></li>
@@ -59,58 +59,57 @@
             </div>
             <!-- end page title -->
 
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Add Event</h4>
+                            <h4 class="card-title">Edit Event</h4>
                             <p class="card-title-desc">DataTables has most features enabled by
                                 default, so all you need to do to use it with your own tables is to call
                                 the construction function: <code>$().DataTable();</code>.
                             </p>
 
                             <!-- ######Main Table ######## -->
-                            <form action="{{route('event.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('event.update', $event->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Category ID</label>
                                     <div class="col-sm-10">
                                         <select name="category" class="form-select" aria-label="Default select example">
-                                            <option selected disabled >Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option selected disabled>Open this select menu</option>
+                                            <option value="1" {{ $event->category_id == 1 ? 'selected' : '' }}>One</option>
+                                            <option value="2" {{ $event->category_id == 2 ? 'selected' : '' }}>Two</option>
+                                            <option value="3" {{ $event->category_id == 3 ? 'selected' : '' }}>Three</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Event Name</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="e_name" value="{{old('e_name')}}" placeholder="Artisanal kale" id="example-text-input">
+                                        <input class="form-control" type="text" name="e_name" value="{{ old('e_name', $event->name) }}" placeholder="Artisanal kale" id="example-text-input">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" type="text" name="description" value="{{old('description')}}" id="example-text-input" placeholder="Artisanal kale"></textarea>
+                                        <textarea class="form-control" type="text" name="description" id="example-text-input" placeholder="Artisanal kale">{{ old('description', $event->description) }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Price</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="price" value="{{old('price')}}" placeholder="Artisanal kale" id="example-text-input">
+                                        <input class="form-control" type="text" name="price" value="{{ old('price', $event->price) }}" placeholder="Artisanal kale" id="example-text-input">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="file" name="image" value="{{old('image')}}" placeholder="Artisanal kale" id="example-text-input">
+                                        <input class="form-control" type="file" name="image" id="example-text-input">
                                     </div>
                                 </div>
-                                <button type="submit" class=" form-control btn btn-success">Submit</button>
+                                <button type="submit" class="form-control btn btn-success">Update</button>
                             </form>
 
                             <!-- end row -->
@@ -121,20 +120,6 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
-
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    © <script>
-                        document.write(new Date().getFullYear())
-                    </script> Veltrix<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand.</span>
-                </div>
-            </div>
-        </div>
-    </footer>
 
 </div>
 @endsection
