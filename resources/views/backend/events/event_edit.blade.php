@@ -80,20 +80,10 @@
                             <form action="{{route('event.update', $event->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
-                            <form action="{{route('event.store')}}" method="post" enctype="multipart/form-data">
-                                @csrf
-
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Category ID</label>
                                     <div class="col-sm-10">
                                         <select name="category" class="form-select" aria-label="Default select example">
-
-                                            <option selected disabled>Open this select menu</option>
-                                            <option value="1" {{ $event->category_id == 1 ? 'selected' : '' }}>One</option>
-                                            <option value="2" {{ $event->category_id == 2 ? 'selected' : '' }}>Two</option>
-                                            <option value="3" {{ $event->category_id == 3 ? 'selected' : '' }}>Three</option>
-
                                             <option selected>Open this select menu</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
@@ -105,47 +95,28 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Event Name</label>
                                     <div class="col-sm-10">
-
                                         <input class="form-control" type="text" name="e_name" value="{{ old('e_name', $event->name) }}" placeholder="Artisanal kale" id="example-text-input">
-
-                                        <input class="form-control" type="text" name="e_name" placeholder="Artisanal kale" id="example-text-input">
-
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-
                                         <textarea class="form-control" type="text" name="description" id="example-text-input" placeholder="Artisanal kale">{{ old('description', $event->description) }}</textarea>
-
-                                        <textarea class="form-control" type="text" name="description" id="example-text-input" placeholder="Artisanal kale"></textarea>
-
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Price</label>
                                     <div class="col-sm-10">
-
                                         <input class="form-control" type="text" name="price" value="{{ old('price', $event->price) }}" placeholder="Artisanal kale" id="example-text-input">
-
-                                        <input class="form-control" type="text" name="price" placeholder="Artisanal kale" id="example-text-input">
-
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-
-                                        <input class="form-control" type="file" name="image" id="example-text-input">
-                                    </div>
-                                </div>
-                                <button type="submit" class="form-control btn btn-success">Update</button>
-
                                         <input class="form-control" type="file" name="image" placeholder="Artisanal kale" id="example-text-input">
                                     </div>
                                 </div>
-                                <button type="submit" class=" form-control btn btn-success">Submit</button>
-
+                                <button type="submit" class="form-control btn btn-success">Update</button>
                             </form>
 
                             <!-- end row -->
@@ -172,6 +143,3 @@
 <script src="{{url('')}}/assets/js/app.js"></script>
 
 @endsection
-
-
-
