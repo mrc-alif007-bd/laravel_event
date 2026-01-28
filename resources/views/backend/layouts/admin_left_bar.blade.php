@@ -39,12 +39,21 @@
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect">
                                     <i class="ti-receipt"></i>
-                                    <span>Event Management</span>
+                                    <span>Events </span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{url('admin/event')}}">All Events</a></li>
                                     <li><a href="{{url('admin/event/create')}}">Add Events</a></li>
-                                    <li><a href="form-validation.html">Events Categories</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="ti-receipt"></i>
+                                    <span>Event Categories</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{url('admin/category')}}">Events Categories</a></li>
+                                    <li><a href="{{url('admin/category/create')}}">Add Categories</a></li>
                                 </ul>
                             </li>
                             <li>
