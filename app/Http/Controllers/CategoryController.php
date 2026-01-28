@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Category::all();
+        return view('backend.category.category_list', compact('cats'));
     }
 
     /**
@@ -20,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.category.add_category');
     }
 
     /**
@@ -28,7 +29,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'c_name' => 'required|min:3|max:50',
+            'description' => 'required',
+        ]);
+
+
+
+        Category::create([
+            'name'        => $request->c_name,
+            'description' => $request->description,
+
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Category added');
     }
 
     /**
@@ -44,7 +58,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('backend.category.category_edit', compact('category'));
     }
 
     /**
@@ -52,7 +66,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'c_name' => 'required|min:3|max:50',
+            'description' => 'required',
+        ]);
+
+
+
+        $category->update([
+            'name'        => $request->c_name,
+            'description' => $request->description,
+
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Category Updated');
     }
 
     /**
@@ -60,6 +87,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+
+    $category->delete();
+
+    return redirect()->route('category.index')
+        ->with('success', 'Successfully Deleted');
     }
 }

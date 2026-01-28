@@ -42,7 +42,7 @@
             <div class="page-title-box">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h6 class="page-title">Data tables</h6>
+                        <h6 class="page-title">Category tables</h6>
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{url('')}}/#">Veltrix</a></li>
                             <li class="breadcrumb-item"><a href="{{url('')}}/#">Tables</a></li>
@@ -76,7 +76,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Default Datatable <span class="float-end"><a href="{{route('event.create')}}" class="btn btn-primary">Add New Events</a></span></h4>
+                            <h4 class="card-title">Default Datatable <span class="float-end"><a href="{{route('category.create')}}" class="btn btn-primary">Add New Categories</a></span></h4>
                             <p class="card-title-desc">DataTables has most features enabled by
                                 default, so all you need to do to use it with your own tables is to call
                                 the construction function: <code>$().DataTable();</code>.
@@ -86,33 +86,27 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Category Id</th>
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Price</th>
-                                        <th>Image</th>
                                         <th>Action</th>
-
+                                        
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-
-                                    @foreach($events as $event)
+                                    
+                                    @foreach($cats as $cat)
                                     <tr>
-                                        <form action="{{route('event.destroy', $event->id)}}" method="post">
+                                        <form action="{{route('category.destroy', $cat->id)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <th scope="row">{{$event->id}}</th>
-                                            <th>{{$event->category_id}}</th>
-                                            <td>{{$event->name}}</td>
-                                            <td>{{$event->description}}</td>
-                                            <td>{{$event->price}}</td>
-                                            <td>{{$event->image}}</td>
+                                            <th scope="row">{{$cat->id}}</th>
+                                            <td>{{$cat->name}}</td>
+                                            <td>{{$cat->description}}</td>
                                             <td>
                                                 <!-- <i  class="fa fa-pencil-square"></i> -->
-                                                <a href="{{route('event.edit', $event->id)}}" class="btn btn-primary">Edit</a>
+                                                <a href="{{route('category.edit', $cat->id)}}" class="btn btn-primary">Edit</a>
                                                 <!-- <i class="fa fa-trash-o"></i> -->
                                                 <button class="btn btn-danger">Delete</button>
                                             </td>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ Route::middleware('auth:admin')->prefix('admin')->group( function () {
     Route::view('/dashboard','backend.admin_dashboard');
 
     Route::resource('event',EventController::class);
+    Route::resource('category',CategoryController::class);
 
 });
 
