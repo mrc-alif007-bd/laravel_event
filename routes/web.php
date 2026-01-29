@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VenueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,7 @@ Route::middleware('auth:admin')->prefix('admin')->group( function () {
 
     Route::resource('event',EventController::class);
     Route::resource('category',CategoryController::class);
+    Route::resource('venue',VenueController::class);
 
 });
 

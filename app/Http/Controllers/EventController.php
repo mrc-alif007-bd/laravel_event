@@ -29,11 +29,14 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
-            'e_name' => 'required|min:3|max:50',
             'category' => 'required',
-            'description' => 'required',
+            'title' => 'required|min:3|max:50',
+            'venue' => 'required',
             'price' => 'required',
+            'description' => 'required',
+            'status' => 'required',
             'image' => 'nullable|mimes:jpg,png,jpeg|max:2048',
         ]);
 
@@ -47,9 +50,11 @@ class EventController extends Controller
 
         Event::create([
             'category_id' => $request->category,
-            'name'        => $request->e_name,
-            'description' => $request->description,
+            'title'        => $request->title,
+            'venue_id' => $request->venue,
             'price'       => $request->price,
+            'description' => $request->description,
+            'status' => $request->status,
             'image'       => $event_img,
         ]);
 
@@ -78,54 +83,58 @@ class EventController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Event $event)
-{
-    $request->validate([
-        'e_name' => 'required|min:3|max:50',
-        'category' => 'required',
-        'description' => 'required',
-        'price' => 'required',
-        'image' => 'nullable|mimes:jpg,png,jpeg|max:2048',
-    ]);
+    {
+        $request->validate([
+            'category' => 'required',
+            'title' => 'required|min:3|max:50',
+            'venue' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'image' => 'nullable|mimes:jpg,png,jpeg|max:2048',
+        ]);
 
-    $event_img = $event->image;
+        $event_img = $event->image;
 
-    if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
 
-        // delete old image
-        if ($event->image && file_exists(public_path($event->image))) {
-            unlink(public_path($event->image));
+            // delete old image
+            if ($event->image && file_exists(public_path($event->image))) {
+                unlink(public_path($event->image));
+            }
+
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('event_image'), $imageName);
+            $event_img = 'event_image/' . $imageName;
         }
 
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('event_image'), $imageName);
-        $event_img = 'event_image/' . $imageName;
+        $event->update([
+            'category_id' => $request->category,
+            'title'        => $request->title,
+            'venue_id' => $request->venue,
+            'price'       => $request->price,
+            'description' => $request->description,
+            'status' => $request->status,
+            'image'       => $event_img,
+        ]);
+
+        return redirect()->route('event.index')->with('success', 'Event Updated');
     }
-
-    $event->update([
-        'category_id' => $request->category,
-        'name'        => $request->e_name,
-        'description' => $request->description,
-        'price'       => $request->price,
-        'image'       => $event_img,
-    ]);
-
-    return redirect()->route('event.index')->with('success', 'Event Updated');
-}
 
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Event $event)
-{
-    if ($event->image && file_exists(public_path($event->image))) {
-        unlink(public_path($event->image));
+    {
+        //dd($event);
+        if ($event->image && file_exists(public_path($event->image))) {
+            unlink(public_path($event->image));
+        }
+
+        $event->delete();
+
+        return redirect()->route('event.index')
+            ->with('success', 'Successfully Deleted');
     }
-
-    $event->delete();
-
-    return redirect()->route('event.index')
-        ->with('success', 'Successfully Deleted');
-}
-
 }

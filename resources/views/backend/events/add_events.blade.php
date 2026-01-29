@@ -79,7 +79,29 @@
                                     <label class="col-sm-2 col-form-label">Category ID</label>
                                     <div class="col-sm-10">
                                         <select name="category" class="form-select" aria-label="Default select example">
-                                            <option selected disabled >Open this select menu</option>
+                                            <option selected disabled>Open this select menu</option>
+                                            <option value="1">Paid</option>
+                                            <option value="0">Not Paid</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Event Name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="title" value="{{old('e_name')}}" placeholder="Artisanal kale" id="example-text-input">
+                                    </div>
+                                </div>
+                                <!-- <div class="row mb-3">
+                                    <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Date and time</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="datetime-local" value="2020-08-04T13:45:00" id="example-datetime-local-input">
+                                    </div>
+                                </div> -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Venue ID</label>
+                                    <div class="col-sm-10">
+                                        <select name="venue" class="form-select" aria-label="Default select example">
+                                            <option selected disabled>Open this select menu</option>
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
                                             <option value="3">Three</option>
@@ -87,9 +109,9 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Event Name</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Price</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="e_name" value="{{old('e_name')}}" placeholder="Artisanal kale" id="example-text-input">
+                                        <input class="form-control" type="text" name="price" value="{{old('price')}}" placeholder="Artisanal kale" id="example-text-input">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -99,11 +121,16 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Price</label>
+                                    <label class="col-sm-2 col-form-label">Status</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="price" value="{{old('price')}}" placeholder="Artisanal kale" id="example-text-input">
+                                        <select name="status" class="form-select" aria-label="Default select example">
+                                            <option selected disabled>Open this select menu</option>
+                                            <option value="1">Up Coming</option>
+                                            <option value="2">Completed</option>
+                                            <option value="3">Canceled</option>
+                                        </select>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
