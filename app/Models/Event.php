@@ -11,17 +11,19 @@ class Event extends Model
 
     protected $fillable = [
 
-        'category_id',
-        'name',
-        'description',
+        'title',
+        'venue_id',
         'price',
+        'description',
+        'category_id',
+        'status',                
         'image',                
         
     ];
 
-    public function category()
+    public function venue()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Venue::class, 'venue_id');
     }
 
 }

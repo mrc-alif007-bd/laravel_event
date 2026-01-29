@@ -86,10 +86,12 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Category Id</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
+                                        <th>title</th>
+                                        <th>Venue Id</th>
                                         <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Category Id</th>
+                                        <th>Status</th>
                                         <th>Image</th>
                                         <th>Action</th>
 
@@ -101,22 +103,26 @@
 
                                     @foreach($events as $event)
                                     <tr>
-                                        <form action="{{route('event.destroy', $event->id)}}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <th scope="row">{{$event->id}}</th>
-                                            <th>{{$event->category_id}}</th>
-                                            <td>{{$event->name}}</td>
-                                            <td>{{$event->description}}</td>
-                                            <td>{{$event->price}}</td>
-                                            <td>{{$event->image}}</td>
-                                            <td>
-                                                <!-- <i  class="fa fa-pencil-square"></i> -->
-                                                <a href="{{route('event.edit', $event->id)}}" class="btn btn-primary">Edit</a>
-                                                <!-- <i class="fa fa-trash-o"></i> -->
-                                                <button class="btn btn-danger">Delete</button>
-                                            </td>
-                                        </form>
+
+                                        <th scope="row">{{$event->id}}</th>
+                                        <td>{{$event->title}}</td>
+                                        <th>{{$event->venue_id}}</th>
+                                        <td>{{$event->price}}</td>
+                                        <td>{{$event->description}}</td>
+                                        <th>{{$event->Category_id}}</th>
+                                        <td>{{$event->status}}</td>
+                                        <td>{{$event->image}}</td>
+                                        <td>
+                                            <!-- <i  class="fa fa-pencil-square"></i> -->
+                                            <a href="{{route('event.edit', $event->id)}}" class="badge bg-primary">Edit</a>
+                                            <!-- <i class="fa fa-trash-o"></i> -->
+                                            <form action="{{route('event.destroy', $event->id)}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="badge bg-danger">Delete</button>
+                                            </form>
+                                        </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>

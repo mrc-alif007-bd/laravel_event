@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->smallIncrements('id'); // 5 digit
-            $table->smallInteger('category_id');
-            $table->string('name',100);
-            $table->string('description',200)->nullable();
+            $table->string('title',50);
+            $table->smallInteger('venue_id');
             $table->decimal('price',8,2);
+            $table->string('description',200)->nullable();
+            $table->smallInteger('Category_id');
+            $table->string('status',100);            
             $table->string('image',100);            
             $table->timestamps();
         });

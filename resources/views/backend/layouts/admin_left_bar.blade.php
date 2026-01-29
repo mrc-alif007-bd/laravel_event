@@ -46,7 +46,7 @@
                                     <li><a href="{{url('admin/event/create')}}">Add Events</a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="javascript: void(0);" class="waves-effect">
                                     <i class="ti-receipt"></i>
                                     <span>Event Categories</span>
@@ -55,7 +55,7 @@
                                     <li><a href="{{url('admin/category')}}">Events Categories</a></li>
                                     <li><a href="{{url('admin/category/create')}}">Add Categories</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect">
                                     <i class="ti-receipt"></i>
