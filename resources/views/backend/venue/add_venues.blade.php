@@ -3,10 +3,9 @@
 @section("head")
 <head>
     <meta charset="utf-8">
-    <title>Add Event | Veltrix - Admin & Dashboard Template</title>
+    <title>Add Venue | Veltrix - Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
-    <meta content="Themesbrand" name="author">
+
     <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
 
     <!-- Bootstrap & Icons -->
@@ -23,16 +22,7 @@
 
             <!-- Page Title -->
             <div class="page-title-box">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <h6 class="page-title">Add Event</h6>
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="#">Veltrix</a></li>
-                            <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Add Event</li>
-                        </ol>
-                    </div>
-                </div>
+                <h6 class="page-title">Add Venue</h6>
             </div>
 
             <!-- Form Card -->
@@ -41,55 +31,49 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Event Form</h4>
+                            <h4 class="card-title">Add Venue</h4>
 
-                            <form action="{{ route('event.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('venue.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
-                                <!-- Category -->
+                                <!-- Venue Name -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Category</label>
+                                    <label class="col-sm-2 col-form-label">Venue Name</label>
                                     <div class="col-sm-10">
-                                        <select name="category" class="form-select">
-                                            <option disabled selected>Select Category</option>
-                                            <option value="1" {{ old('category') == 1 ? 'selected' : '' }}>Paid</option>
-                                            <option value="0" {{ old('category') == 0 ? 'selected' : '' }}>Not Paid</option>
+                                        <input class="form-control" type="text" name="name" value="{{ old('name') }}">
+                                        @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Address -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Address</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" name="address">{{ old('address') }}</textarea>
+                                        @error('address') <small class="text-danger">{{ $message }}</small> @enderror
+                                    </div>
+                                </div>
+
+                                <!-- City -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">City</label>
+                                    <div class="col-sm-10">
+                                        <select name="city" class="form-select">
+                                            <option disabled selected>Select city</option>
+                                            <option value="dhaka" >Dhaka</option>
+                                            <option value="rajshahi" >Rajshahi</option>
+                                            <option value="khulna" >Khulna</option>
                                         </select>
-                                        @error('category') <small class="text-danger">{{ $message }}</small> @enderror
+                                        @error('city') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
 
-                                <!-- Event Name -->
+                                <!-- Capacity -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Event Name</label>
+                                    <label class="col-sm-2 col-form-label">Capacity</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="title" value="{{ old('title') }}" placeholder="Enter event name">
-                                        @error('title') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                </div>
-
-                                <!-- Venue -->
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Venue</label>
-                                    <div class="col-sm-10">
-                                        <select name="venue" class="form-select">
-                                            <option disabled selected>Select Venue</option>
-                                            @foreach($venues as $venue)
-                                                <option value="{{ $venue->id }}" {{ old('venue') == $venue->id ? 'selected' : '' }}>
-                                                    {{ $venue->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('venue') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                </div>
-
-                                <!-- Price -->
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Price</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="price" value="{{ old('price') }}" placeholder="Enter price">
-                                        @error('price') <small class="text-danger">{{ $message }}</small> @enderror
+                                        <input class="form-control" type="number" name="capacity" value="{{ old('capacity') }}">
+                                        @error('capacity') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
 
@@ -97,7 +81,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" name="description" placeholder="Enter description">{{ old('description') }}</textarea>
+                                        <textarea class="form-control" name="description">{{ old('description') }}</textarea>
                                         @error('description') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
@@ -107,10 +91,9 @@
                                     <label class="col-sm-2 col-form-label">Status</label>
                                     <div class="col-sm-10">
                                         <select name="status" class="form-select">
-                                            <option disabled selected>Select Status</option>
-                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Up Coming</option>
-                                            <option value="2" {{ old('status') == 2 ? 'selected' : '' }}>Completed</option>
-                                            <option value="3" {{ old('status') == 3 ? 'selected' : '' }}>Canceled</option>
+                                            <option disabled selected>Select status</option>
+                                            <option value="active" >Active</option>
+                                            <option value="inactive" >Inactive</option>
                                         </select>
                                         @error('status') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>

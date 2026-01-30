@@ -53,6 +53,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{url('admin/category')}}">Events Categories</a></li>
+                                    <li><a href="{{url('admin/venue')}}">Events Categories</a></li>
                                     <li><a href="{{url('admin/category/create')}}">Add Categories</a></li>
                                 </ul>
                             </li> -->
@@ -62,8 +63,8 @@
                                     <span>Venues Management</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="form-elements.html">All Venues</a></li>
-                                    <li><a href="form-validation.html">Add Venues</a></li>
+                                    <li><a href="{{url('admin/venue')}}">All Venues</a></li>
+                                    <li><a href="{{url('admin/venue/create')}}">Add Venues</a></li>
                                 </ul>
                             </li>
                             <li>

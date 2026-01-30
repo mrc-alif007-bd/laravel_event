@@ -10,20 +10,24 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-
-        'title',
+        'category_id',
         'venue_id',
+        'title',
         'price',
         'description',
-        'category_id',
-        'status',                
-        'image',                
-        
+        'status',
+        'image',
     ];
 
+    // 🔗 Event belongs to a Venue
     public function venue()
     {
-        return $this->belongsTo(Venue::class, 'venue_id');
+        return $this->belongsTo(Venue::class);
     }
 
+    // 🔗 Event belongs to a Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
