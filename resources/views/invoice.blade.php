@@ -1,3 +1,12 @@
+
+<div style="text-align:center; margin-bottom:20px;">
+    <button onclick="downloadInvoice()"
+        style="padding:10px 20px;border:none;background:#007bff;color:#fff;border-radius:5px;cursor:pointer;">
+        Download Invoice
+    </button>
+</div>
+
+
 <div class="booking-details"
     style="max-width:600px;margin:40px auto;padding:20px;background:#f9f9f9;border-radius:8px;font-family:Arial,sans-serif;color:#333;">
     <h2 style="text-align:center;margin-bottom:20px;">Booking Receipt</h2>
@@ -10,3 +19,12 @@
     <p><strong>Status:</strong> {{ ucfirst($booking->payment_status ?? 'pending') }}</p>
     <p><strong>Transaction ID:</strong> {{ $booking->transaction_id ?? 'N/A' }}</p>
 </div>
+
+
+<script>
+function downloadInvoice() {
+    window.print();
+}
+</script>
+
+
