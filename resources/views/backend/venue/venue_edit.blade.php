@@ -1,6 +1,7 @@
 @extends("backend.layouts.master")
 
 @section("head")
+
 <head>
     <meta charset="utf-8">
     <title>Edit Event | Veltrix - Admin & Dashboard Template</title>
@@ -45,7 +46,7 @@
                                 @csrf
                                 @method('PUT')
 
-                                 <!-- Venue Name -->
+                                <!-- Venue Name -->
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Venue Name</label>
                                     <div class="col-sm-10">
@@ -69,9 +70,9 @@
                                     <div class="col-sm-10">
                                         <select name="city" class="form-select">
                                             <option disabled selected>Select city</option>
-                                            <option value="dhaka" >Dhaka</option>
-                                            <option value="rajshahi" >Rajshahi</option>
-                                            <option value="khulna" >Khulna</option>
+                                            <option value="dhaka">Dhaka</option>
+                                            <option value="rajshahi">Rajshahi</option>
+                                            <option value="khulna">Khulna</option>
                                         </select>
                                         @error('city') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
@@ -101,8 +102,8 @@
                                     <div class="col-sm-10">
                                         <select name="status" class="form-select">
                                             <option disabled selected>Select status</option>
-                                            <option value="active" >Active</option>
-                                            <option value="inactive" >Inactive</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
                                         </select>
                                         @error('status') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>

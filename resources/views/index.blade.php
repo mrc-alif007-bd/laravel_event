@@ -730,52 +730,7 @@
          <!--End container-->
       </section>
       <!--End register section-->
-      <!--Sponsor section-->
-      <section class="sponser pt-100 pb-100">
-         <!--Container-->
-         <div class="container">
-            <!--Row-->
-            <div class="row">
-               <div class="col-sm-8 col-sm-offset-2 mb-50 text-center ">
-                  <h1 class="title">Bigup to Our Sponsors </h1>
-                  <p class="title-lead mt-10 mb-20">For further info about sponsoring feel free to get in touch with us</p>
-               </div>
-            </div>
-            <!--End row-->
-         </div>
-         <!--End container-->
-         <!--Container-->
-         <div class="container">
-            <!--Row-->
-            <div class="row">
-               <div class="col-sm-12  col-sm-push-2 text-center">
-                  <div class="col-md-2 col-sm-2 ">
-                     <div class="block-sponsor">
-                        <img src="frontend/img/logo/3.png" alt="">
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-2">
-                     <div class="block-sponsor">
-                        <img src="frontend/img/logo/1.png" alt="">
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-2">
-                     <div class="block-sponsor">
-                        <img src="frontend/img/logo/4.png" alt="">
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-2">
-                     <div class="block-sponsor">
-                        <img src="frontend/img/logo/2.png" alt="">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!--End row-->
-         </div>
-         <!--End container-->
-      </section>
-      <!--End sponser section-->
+      
       <!--Contact section-->
       <section id="location" class="location pt-200 pb-200 bg-dark">
          <div class="block-map ">
