@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VenueController;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, 'index'])->name('home');
+
+Route::post('/', [IndexController::class, 'booking'])->name('store');
+
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
@@ -33,7 +36,7 @@ Route::middleware('auth')->group(function () {
 
 //  ................ admin login , 
 
-Route::middleware('guest:admin')->prefix('admin')->group( function () {
+Route::middleware('guest:admin')->prefix('admin')->group(function () {
 
     Route::get('login', [App\Http\Controllers\Auth\Admin\LoginController::class, 'create'])->name('admin.login');
     Route::post('login', [App\Http\Controllers\Auth\Admin\LoginController::class, 'store']);
@@ -43,16 +46,16 @@ Route::middleware('guest:admin')->prefix('admin')->group( function () {
 
 });
 
-Route::middleware('auth:admin')->prefix('admin')->group( function () {
+Route::middleware('auth:admin')->prefix('admin')->group(function () {
 
     Route::post('logout', [App\Http\Controllers\Auth\Admin\LoginController::class, 'destroy'])->name('admin.logout');
 
-    Route::view('/dashboard','backend.admin_dashboard');
+    Route::view('/dashboard', 'backend.admin_dashboard');
 
-    Route::resource('event',EventController::class);
-    Route::resource('category',CategoryController::class);
-    Route::resource('venue',VenueController::class);
-
+    Route::resource('event', EventController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('venue', VenueController::class);
+    Route::resource('booking', BookingController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

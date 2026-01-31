@@ -1,6 +1,7 @@
 @extends ("backend.layouts.master")
 
 @section("head")
+
 <head>
     <meta charset="utf-8">
     <title>Events List | Veltrix</title>
@@ -86,15 +87,17 @@
                                         <td>{{ $event->id }}</td>
                                         <td>{{ $event->title }}</td>
                                         <td>{{ $event->venue ? $event->venue->name : 'N/A' }}</td>
-                                        <td>{{ $event->category ? ($event->category->id == 1 ? 'Paid' : 'Not Paid') : 'N/A' }}</td>
+                                        <td>
+                                            {{ $event->category_id == 1 ? 'Paid' : 'Not Paid' }}
+                                        </td>
                                         <td>{{ $event->price }}</td>
                                         <td>
                                             @if($event->status == 1)
-                                                <span class="badge bg-info">Upcoming</span>
+                                            <span class="badge bg-info">Upcoming</span>
                                             @elseif($event->status == 2)
-                                                <span class="badge bg-success">Completed</span>
+                                            <span class="badge bg-success">Completed</span>
                                             @else
-                                                <span class="badge bg-danger">Canceled</span>
+                                            <span class="badge bg-danger">Canceled</span>
                                             @endif
                                         </td>
                                         <td>

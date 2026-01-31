@@ -1,6 +1,7 @@
 @extends("backend.layouts.master")
 
 @section("head")
+
 <head>
     <meta charset="utf-8">
     <title>Add Event | Veltrix - Admin & Dashboard Template</title>
@@ -50,10 +51,10 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Category</label>
                                     <div class="col-sm-10">
-                                        <select name="category" class="form-select">
+                                        <select name="category_id" class="form-select">
                                             <option disabled selected>Select Category</option>
-                                            <option value="1" {{ old('category') == 1 ? 'selected' : '' }}>Paid</option>
-                                            <option value="0" {{ old('category') == 0 ? 'selected' : '' }}>Not Paid</option>
+                                            <option value="1">Paid</option>
+                                            <option value="0">Not Paid</option>
                                         </select>
                                         @error('category') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
@@ -72,12 +73,12 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Venue</label>
                                     <div class="col-sm-10">
-                                        <select name="venue" class="form-select">
+                                        <select name="venue_id" class="form-select">
                                             <option disabled selected>Select Venue</option>
                                             @foreach($venues as $venue)
-                                                <option value="{{ $venue->id }}" {{ old('venue') == $venue->id ? 'selected' : '' }}>
-                                                    {{ $venue->name }}
-                                                </option>
+                                            <option value="{{ $venue->id }}">
+                                                {{ $venue->name }}
+                                            </option>
                                             @endforeach
                                         </select>
                                         @error('venue') <small class="text-danger">{{ $message }}</small> @enderror
@@ -108,9 +109,9 @@
                                     <div class="col-sm-10">
                                         <select name="status" class="form-select">
                                             <option disabled selected>Select Status</option>
-                                            <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Up Coming</option>
-                                            <option value="2" {{ old('status') == 2 ? 'selected' : '' }}>Completed</option>
-                                            <option value="3" {{ old('status') == 3 ? 'selected' : '' }}>Canceled</option>
+                                            <option value="1">Up Coming</option>
+                                            <option value="2">Completed</option>
+                                            <option value="3">Canceled</option>
                                         </select>
                                         @error('status') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>

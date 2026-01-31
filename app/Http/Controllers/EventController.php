@@ -35,7 +35,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|in:0,1',
             'title'       => 'required|min:3|max:50',
             'venue_id'    => 'required|exists:venues,id',
             'price'       => 'required|numeric',
@@ -83,7 +83,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $request->validate([
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|in:0,1',
             'title'       => 'required|min:3|max:50',
             'venue_id'    => 'required|exists:venues,id',
             'price'       => 'required|numeric',

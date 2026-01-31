@@ -51,15 +51,16 @@
                                 @csrf
                                 @method('put')
 
-                                <!-- Category -->
+                                 <!-- Category -->
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Category</label>
                                     <div class="col-sm-10">
-                                        <select name="category" class="form-select">
-                                            <option disabled>Select Category</option>
-                                            <option value="1" {{ $event->category_id == 1 ? 'selected' : '' }}>Paid</option>
-                                            <option value="0" {{ $event->category_id == 0 ? 'selected' : '' }}>Not Paid</option>
+                                        <select name="category_id" class="form-select">
+                                            <option disabled selected>Select Category</option>
+                                            <option value="1">Paid</option>
+                                            <option value="0">Not Paid</option>
                                         </select>
+                                        @error('category') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
 
@@ -75,14 +76,15 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Venue</label>
                                     <div class="col-sm-10">
-                                        <select name="venue" class="form-select">
-                                            <option disabled>Select Venue</option>
+                                        <select name="venue_id" class="form-select">
+                                            <option disabled selected>Select Venue</option>
                                             @foreach($venues as $venue)
-                                                <option value="{{ $venue->id }}" {{ $event->venue_id == $venue->id ? 'selected' : '' }}>
-                                                    {{ $venue->name }}
-                                                </option>
+                                            <option value="{{ $venue->id }}">
+                                                {{ $venue->name }}
+                                            </option>
                                             @endforeach
                                         </select>
+                                        @error('venue') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
 
@@ -107,11 +109,12 @@
                                     <label class="col-sm-2 col-form-label">Status</label>
                                     <div class="col-sm-10">
                                         <select name="status" class="form-select">
-                                            <option disabled>Select Status</option>
-                                            <option value="1" {{ $event->status == 1 ? 'selected' : '' }}>Up Coming</option>
-                                            <option value="2" {{ $event->status == 2 ? 'selected' : '' }}>Completed</option>
-                                            <option value="3" {{ $event->status == 3 ? 'selected' : '' }}>Canceled</option>
+                                            <option disabled selected>Select Status</option>
+                                            <option value="1">Up Coming</option>
+                                            <option value="2">Completed</option>
+                                            <option value="3">Canceled</option>
                                         </select>
+                                        @error('status') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                 </div>
 
