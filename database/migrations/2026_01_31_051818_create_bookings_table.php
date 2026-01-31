@@ -6,34 +6,32 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->smallIncrements('id');
 
-            // Foreign keys
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedSmallInteger('event_id');
 
             $table->tinyInteger('number_of_ticket');
-            $table->decimal('total_amount', 8, 2);
+            $table->decimal('total_amount', 8, 2)->default(0);
 
-            $table->string('status', 100);
+            $table->string('status', 100)->default('pending'); // booking status
+
+            $table->string('name', 255);
+            $table->string('email', 255);
+            $table->string('phone', 50)->nullable();
+
+            // Payment info
+            $table->string('payment_method', 50)->nullable();
+            $table->string('payment_status', 50)->default('pending');
+            $table->string('transaction_id', 255)->nullable();
 
             $table->timestamps();
-
-            // Optional: add foreign key constraints
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('bookings');
