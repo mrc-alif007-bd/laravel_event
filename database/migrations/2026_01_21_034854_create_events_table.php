@@ -12,10 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->smallIncrements('id'); // 5 digit id
+            $table->id(); // bigIncrements (unsigned BIGINT) to match venues.id
             $table->string('title', 50);
-            $table->unsignedBigInteger('venue_id');
-            $table->foreign('venue_id')->references('id')->on('venues')->onDelete('cascade');
+            $table->unsignedBigInteger('venue_id'); // must match venues.id
+            $table->foreign('venue_id')
+                ->references('id')
+                ->on('venues')
+                ->onDelete('cascade');
             $table->decimal('price', 8, 2);
             $table->string('description', 200)->nullable();
             $table->tinyInteger('category_id')->default(0); // 0 = Not Paid, 1 = Paid
@@ -24,6 +27,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -17,24 +17,33 @@ class IndexController extends Controller
     // Handle booking form submission
     public function booking(Request $request)
     {
-        // dd($request);
-        // Validate the request
+        // Validate request
         $request->validate([
-            'event_id'         => 'required|exists:events,id',
-            'number_of_ticket' => 'required|integer|min:1',
-            'total_amount'     => 'required|numeric|min:0',
+            'name'       => 'required|string|max:255',
+            'email'      => 'required|email|max:255',
+            'phone'      => 'nullable|string|max:20',
+            'ticket'     => 'required|integer|min:1',
+            'event_name' => 'required|exists:events,id',
         ]);
 
+        // Get event info
+        $event = Event::findOrFail($request->event_name);
 
+        // Calculate total amount (price × tickets)
+        $totalAmount = $event->price * $request->ticket;
 
-        // Create booking
-        Booking::create([
-            'event_id'         => $request->event_id,
-            'number_of_ticket' => $request->number_of_ticket,
-            'total_amount'     => $request->total_amount,
-            'status'           => 'pending', // default status
+        // Create booking and get the object
+        $booking = Booking::create([
+            'event_id'         => $event->id,
+            'number_of_ticket' => $request->ticket,
+            'total_amount'     => $totalAmount,
+            'status'           => 'pending',
+            'name'             => $request->name,
+            'email'            => $request->email,
+            'phone'            => $request->phone,
         ]);
 
-         return redirect()->back()->with('success', 'Booking successful!');
+        // Redirect to payment page with booking ID
+        return redirect()->route('payment.show', ['bookingId' => $booking->id]);
     }
 }
