@@ -922,7 +922,6 @@
             </section>
             <!-- newslater-aread-end -->
         </main>
-         hstr  jrjrtjrt
         <!-- main-area-end -->
     <!-- footer -->
         @include ("frontend.layouts.footer")
