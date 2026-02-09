@@ -11,7 +11,12 @@ class IndexController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('index', compact('events'));
+        return view('frontend.index', compact('events'));
+    }
+     public function about()
+    {
+        $events = Event::all();
+        return view('frontend.about', compact('events'));
     }
 
     // Handle booking form submission
