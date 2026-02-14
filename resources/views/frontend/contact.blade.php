@@ -6,21 +6,21 @@
         <title>Dahotel - Luxury Hotel HTML Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{{ url('') }}/assets/img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url('') }}/front_assets/img/favicon.ico">
         <!-- Place favicon.ico in the root directory -->
 
 		<!-- CSS here -->
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/animate.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/fontawesome-pro/css/all.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/dripicons.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/slick.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/meanmenu.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/default.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/style.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/responsive.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/animate.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/fontawesome-pro/css/all.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/dripicons.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/slick.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/meanmenu.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/default.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/style.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/responsive.css">
     </head>
     <body>
         <!-- header -->
@@ -41,7 +41,7 @@
                               
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ url('') }}/assets/index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ url('') }}/front_assets/index.html">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">About</li>
                                     </ol>
                                 </nav>
@@ -84,7 +84,7 @@
                                             <i class="far fa-envelope-open"></i>
                                         </div>
                                         <h5>Message Us</h5>
-                                        <p> <a href="{{ url('') }}/assets/#">support@example.com</a><br><a href="{{ url('') }}/assets/#">info@example.com</a></p>
+                                        <p> <a href="{{ url('') }}/front_assets/#">support@example.com</a><br><a href="{{ url('') }}/front_assets/#">info@example.com</a></p>
                                     </div>
                                 </div>							
                         </div>
@@ -168,24 +168,24 @@
         @include ("frontend.layouts.footer")
         <!-- footer-end -->
 		<!-- JS here -->
-        <script src="{{ url('') }}/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="{{ url('') }}/assets/js/vendor/jquery.min.js"></script>
-        <script src="{{ url('') }}/assets/js/popper.min.js"></script>
-        <script src="{{ url('') }}/assets/js/bootstrap.min.js"></script>
-        <script src="{{ url('') }}/assets/js/slick.min.js"></script>
-        <script src="{{ url('') }}/assets/js/ajax-form.js"></script>
-        <script src="{{ url('') }}/assets/js/paroller.js"></script>
-        <script src="{{ url('') }}/assets/js/wow.min.js"></script>
-        <script src="{{ url('') }}/assets/js/js_isotope.pkgd.min.js"></script>
-        <script src="{{ url('') }}/assets/js/imagesloaded.min.js"></script>
-        <script src="{{ url('') }}/assets/js/parallax.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.waypoints.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.counterup.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.meanmenu.min.js"></script>
-        <script src="{{ url('') }}/assets/js/parallax-scroll.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="{{ url('') }}/assets/js/element-in-view.js"></script>
-        <script src="{{ url('') }}/assets/js/main.js"></script>
+        <script src="{{ url('') }}/front_assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/vendor/jquery.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/popper.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/bootstrap.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/slick.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/ajax-form.js"></script>
+        <script src="{{ url('') }}/front_assets/js/paroller.js"></script>
+        <script src="{{ url('') }}/front_assets/js/wow.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/js_isotope.pkgd.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/imagesloaded.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/parallax.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.waypoints.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.counterup.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.scrollUp.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.meanmenu.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/parallax-scroll.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/element-in-view.js"></script>
+        <script src="{{ url('') }}/front_assets/js/main.js"></script>
     </body>
 </html>

@@ -6,21 +6,21 @@
         <title>Dahotel - Luxury Hotel HTML Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{{ url('') }}/assets/img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url('') }}/front_assets/img/favicon.ico">
         <!-- Place favicon.ico in the root directory -->
 
 		<!-- CSS here -->
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/animate.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/fontawesome-pro/css/all.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/dripicons.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/slick.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/meanmenu.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/default.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/style.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/responsive.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/animate.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/fontawesome-pro/css/all.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/dripicons.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/slick.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/meanmenu.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/default.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/style.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/responsive.css">
     </head>
     <body>
         <!-- header -->
@@ -137,10 +137,10 @@
                                 <div class="col-lg-6 col-md-6">
                                 <div class="services-08-item mb-70">                                    
                                     <div class="services-08-thumb">
-                                     <img src="{{ url('') }}/assets/img/icon/fe-icon01.png" alt="img">
+                                     <img src="{{ url('') }}/front_assets/img/icon/fe-icon01.png" alt="img">
                                     </div>
                                     <div class="services-08-content">
-                                        <h3><a href="{{ url('') }}/assets/single-service.html"> Restaurants</a></h3>
+                                        <h3><a href="{{ url('') }}/front_assets/single-service.html"> Restaurants</a></h3>
                                         <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider</p>
                                     </div>
                                 </div>
@@ -148,10 +148,10 @@
                                <div class="col-lg-6 col-md-6">
                                <div class="services-08-item mb-70">                                                 
                                     <div class="services-08-thumb">
-                                        <img src="{{ url('') }}/assets/img/icon/fe-icon02.png" alt="img">
+                                        <img src="{{ url('') }}/front_assets/img/icon/fe-icon02.png" alt="img">
                                     </div>
                                     <div class="services-08-content">
-                                        <h3><a href="{{ url('') }}/assets/single-service.html">Luxury Room</a></h3>
+                                        <h3><a href="{{ url('') }}/front_assets/single-service.html">Luxury Room</a></h3>
                                        <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider</p>
                                     </div>
                                 </div>
@@ -159,10 +159,10 @@
                             <div class="col-lg-6 col-md-6">
                                <div class="services-08-item mb-70">                                        
                                     <div class="services-08-thumb">
-                                     <img src="{{ url('') }}/assets/img/icon/fe-icon03.png" alt="img">
+                                     <img src="{{ url('') }}/front_assets/img/icon/fe-icon03.png" alt="img">
                                     </div>
                                     <div class="services-08-content">
-                                        <h3><a href="{{ url('') }}/assets/single-service.html">Entertainment</a></h3>
+                                        <h3><a href="{{ url('') }}/front_assets/single-service.html">Entertainment</a></h3>
                                       <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider</p>
                                     </div>
                                 </div>
@@ -170,10 +170,10 @@
                           <div class="col-lg-6 col-md-6">
                              <div class="services-08-item mb-70">                        
                                     <div class="services-08-thumb">
-                                     <img src="{{ url('') }}/assets/img/icon/fe-icon04.png" alt="img">
+                                     <img src="{{ url('') }}/front_assets/img/icon/fe-icon04.png" alt="img">
                                     </div>
                                     <div class="services-08-content">
-                                        <h3><a href="{{ url('') }}/assets/single-service.html">Pool Area</a></h3>
+                                        <h3><a href="{{ url('') }}/front_assets/single-service.html">Pool Area</a></h3>
                                         <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider</p>
                                     </div>
                                 </div>
@@ -181,10 +181,10 @@
                               <div class="col-lg-6 col-md-6">
                                   <div class="services-08-item mb-70">                           
                                     <div class="services-08-thumb">
-                                   <img src="{{ url('') }}/assets/img/icon/fe-icon05.png" alt="img">
+                                   <img src="{{ url('') }}/front_assets/img/icon/fe-icon05.png" alt="img">
                                     </div>
                                     <div class="services-08-content">
-                                        <h3><a href="{{ url('') }}/assets/single-service.html">Cocktail Bar</a></h3>
+                                        <h3><a href="{{ url('') }}/front_assets/single-service.html">Cocktail Bar</a></h3>
                                        <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider</p>
                                     </div>
                                 </div>
@@ -192,10 +192,10 @@
                              <div class="col-lg-6 col-md-6">
                                <div class="services-08-item mb-70">                        
                                     <div class="services-08-thumb">
-                                     <img src="{{ url('') }}/assets/img/icon/fe-icon06.png" alt="img">
+                                     <img src="{{ url('') }}/front_assets/img/icon/fe-icon06.png" alt="img">
                                     </div>
                                     <div class="services-08-content">
-                                        <h3><a href="{{ url('') }}/assets/single-service.html">Tour Guide</a></h3>
+                                        <h3><a href="{{ url('') }}/front_assets/single-service.html">Tour Guide</a></h3>
                                         <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider</p>
                                     </div>
                                 </div>
@@ -266,9 +266,9 @@
                     <div class="row justify-content-center align-items-center">
                          <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="s-about-img p-relative  wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
-                                <a href="{{ url('') }}/https://www.youtube.com/watch?v=gyGsPlt06bo" class="popup-video"> <img src="{{ url('') }}/assets/img/features/about.jpg" alt="img">   </a>
+                                <a href="{{ url('') }}/https://www.youtube.com/watch?v=gyGsPlt06bo" class="popup-video"> <img src="{{ url('') }}/front_assets/img/features/about.jpg" alt="img">   </a>
                                <div class="about-icon">
-                                     <img src="{{ url('') }}/assets/img/features/since.png" alt="img">   
+                                     <img src="{{ url('') }}/front_assets/img/features/since.png" alt="img">   
                                 </div>
                             </div>
                           
@@ -285,7 +285,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-9">    
                             <div class="section-title center-align mb-80 text-center">
-                                <div class="icon mb-50"> <img src="{{ url('') }}/assets/img/icon/hotel-icon-sub.png" alt="img">   </div>
+                                <div class="icon mb-50"> <img src="{{ url('') }}/front_assets/img/icon/hotel-icon-sub.png" alt="img">   </div>
                                 <h5>serve quality service</h5>
                                 <h2>Our <span>hotel features</span></h2>
                                 <p>Visitors to your city need to eat. In fact, some people visit new towns specifically for the food. Use your insider knowledge of the area to get them started with the must-visit eateries.</p>
@@ -300,8 +300,8 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="single-services text-center mb-30">
                                 <div class="services-thumb">
-									<a class="gallery-link popup-image" href="{{ url('') }}/assets/img/gallery/room-img01.png">
-                                    <img src="{{ url('') }}/assets/img/gallery/room-img01.png" alt="img">
+									<a class="gallery-link popup-image" href="{{ url('') }}/front_assets/img/gallery/room-img01.png">
+                                    <img src="{{ url('') }}/front_assets/img/gallery/room-img01.png" alt="img">
 									</a>
                                 </div>
                                 <div class="services-content">                                     
@@ -309,12 +309,12 @@
                                     <p>Visitors to your city need to eat. In fact, some people visit new towns specifically.</p>
                                     <div class="icon">
                                         <ul>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon1.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon2.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon3.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon4.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon5.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon6.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon1.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon2.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon3.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon4.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon5.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon6.png" alt="img"></li>
                                         </ul>
                                     </div>
                                     <div class="day-book">
@@ -329,8 +329,8 @@
                         <div class="col-xl-4 col-md-6">
                              <div class="single-services text-center mb-30">
                                 <div class="services-thumb">
-									<a class="gallery-link popup-image" href="{{ url('') }}/assets/img/gallery/room-img02.png">
-                                    <img src="{{ url('') }}/assets/img/gallery/room-img02.png" alt="img">
+									<a class="gallery-link popup-image" href="{{ url('') }}/front_assets/img/gallery/room-img02.png">
+                                    <img src="{{ url('') }}/front_assets/img/gallery/room-img02.png" alt="img">
 									</a>
                                 </div>
                                 <div class="services-content">                                     
@@ -338,12 +338,12 @@
                                     <p>Visitors to your city need to eat. In fact, some people visit new towns specifically.</p>
                                     <div class="icon">
                                         <ul>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon1.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon2.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon3.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon4.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon5.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon6.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon1.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon2.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon3.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon4.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon5.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon6.png" alt="img"></li>
                                         </ul>
                                     </div>
                                      <div class="day-book">
@@ -359,8 +359,8 @@
                         <div class="col-xl-4 col-md-6">
                               <div class="single-services text-center mb-30">
                                 <div class="services-thumb">
-									<a class="gallery-link popup-image" href="{{ url('') }}/assets/img/gallery/room-img03.png">
-                                    <img src="{{ url('') }}/assets/img/gallery/room-img03.png" alt="img">
+									<a class="gallery-link popup-image" href="{{ url('') }}/front_assets/img/gallery/room-img03.png">
+                                    <img src="{{ url('') }}/front_assets/img/gallery/room-img03.png" alt="img">
 									</a>
                                 </div>
                                 <div class="services-content">                                    
@@ -368,12 +368,12 @@
                                    <p>Visitors to your city need to eat. In fact, some people visit new towns specifically.</p>
                                     <div class="icon">
                                         <ul>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon1.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon2.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon3.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon4.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon5.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon6.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon1.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon2.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon3.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon4.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon5.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon6.png" alt="img"></li>
                                         </ul>
                                     </div>
                                      <div class="day-book">
@@ -389,7 +389,7 @@
                               <div class="single-services text-center mb-30">
                                 <div class="services-thumb">
 									<a class="gallery-link popup-image" href="{{ url('') }}/img/gallery/room-img04.png">
-                                    <img src="{{ url('') }}/assets/img/gallery/room-img04.png" alt="img">
+                                    <img src="{{ url('') }}/front_assets/img/gallery/room-img04.png" alt="img">
 									</a>
                                 </div>
                                 <div class="services-content">                                  
@@ -397,12 +397,12 @@
                                   <p>Visitors to your city need to eat. In fact, some people visit new towns specifically.</p>
                                     <div class="icon">
                                         <ul>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon1.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon2.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon3.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon4.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon5.png" alt="img"></li>
-                                            <li><img src="{{ url('') }}/assets/img/icon/sve-icon6.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon1.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon2.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon3.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon4.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon5.png" alt="img"></li>
+                                            <li><img src="{{ url('') }}/front_assets/img/icon/sve-icon6.png" alt="img"></li>
                                         </ul>
                                     </div>
                                        <div class="day-book">
@@ -425,27 +425,27 @@
                          <div class="col-lg-12 col-md-12 col-sm-12 pr-30">
                            <div class="feature-slider-active">                               
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>Minimal Duplex Room /</h2>
                                     </div>
                                </div>                          
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>wifi bed water house /</h2>
                                     </div>
                                </div>
                            
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>free wifi zone /</h2>
                                     </div>
                                </div>
                              
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>wifi bed water house /</h2>
                                     </div>
@@ -475,7 +475,7 @@
                         <div class="col-lg-4 col-md-6">
                              <div class="pricing-box pricing-box2 mb-60">
                                     <div class="pricng-img">
-                                     <img src="{{ url('') }}/assets/img/bg/pr-img-01.jpg" alt="contact-bg-an-01">
+                                     <img src="{{ url('') }}/front_assets/img/bg/pr-img-01.jpg" alt="contact-bg-an-01">
                                     </div>
                                     <div class="pricing-head">  
                                         <h3>luxury plan</h3>    
@@ -503,7 +503,7 @@
                            <div class="col-lg-4 col-md-6">
                              <div class="pricing-box pricing-box2 mb-60">
                                     <div class="pricng-img">
-                                     <img src="{{ url('') }}/assets/img/bg/pr-img-02.jpg" alt="contact-bg-an-01">
+                                     <img src="{{ url('') }}/front_assets/img/bg/pr-img-02.jpg" alt="contact-bg-an-01">
                                     </div>
                                     <div class="pricing-head">  
                                         <h3>couple plan</h3>    
@@ -531,7 +531,7 @@
                           <div class="col-lg-4 col-md-6">
                              <div class="pricing-box pricing-box2 mb-60">
                                     <div class="pricng-img">
-                                     <img src="{{ url('') }}/assets/img/bg/pr-img-03.jpg" alt="contact-bg-an-01">
+                                     <img src="{{ url('') }}/front_assets/img/bg/pr-img-03.jpg" alt="contact-bg-an-01">
                                     </div>
                                     <div class="pricing-head">  
                                         <h3>intro price</h3>    
@@ -581,7 +581,7 @@
                                             <h6>Rosalina William</h6>
                                             <span>ceo</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar.png" alt="img">
                                     </div>
                                 </div>
                                 <div class="single-testimonial">
@@ -592,7 +592,7 @@
                                             <h6>Nelson Helson</h6>
                                             <span>founder</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_02.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_02.png" alt="img">
                                     </div>
                                 </div>
                                <div class="single-testimonial">
@@ -603,7 +603,7 @@
                                             <h6>Tromazo Zelson</h6>
                                             <span>designer</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_03.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_03.png" alt="img">
                                     </div>
                                 </div>
                                    <div class="single-testimonial">
@@ -614,7 +614,7 @@
                                             <h6>Rosalina William</h6>
                                             <span>ceo</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar.png" alt="img">
                                     </div>
                                 </div>
                                 <div class="single-testimonial">
@@ -625,7 +625,7 @@
                                             <h6>Nelson Helson</h6>
                                             <span>founder</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_02.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_02.png" alt="img">
                                     </div>
                                 </div>
                                <div class="single-testimonial">
@@ -636,7 +636,7 @@
                                             <h6>Tromazo Zelson</h6>
                                             <span>designer</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_03.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_03.png" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -652,24 +652,24 @@
         @include ("frontend.layouts.footer")
         <!-- footer-end -->
 		<!-- JS here -->
-        <script src="{{ url('') }}/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="{{ url('') }}/assets/js/vendor/jquery.min.js"></script>
-        <script src="{{ url('') }}/assets/js/popper.min.js"></script>
-        <script src="{{ url('') }}/assets/js/bootstrap.min.js"></script>
-        <script src="{{ url('') }}/assets/js/slick.min.js"></script>
-        <script src="{{ url('') }}/assets/js/ajax-form.js"></script>
-        <script src="{{ url('') }}/assets/js/paroller.js"></script>
-        <script src="{{ url('') }}/assets/js/wow.min.js"></script>
-        <script src="{{ url('') }}/assets/js/js_isotope.pkgd.min.js"></script>
-        <script src="{{ url('') }}/assets/js/imagesloaded.min.js"></script>
-        <script src="{{ url('') }}/assets/js/parallax.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.waypoints.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.counterup.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.meanmenu.min.js"></script>
-        <script src="{{ url('') }}/assets/js/parallax-scroll.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="{{ url('') }}/assets/js/element-in-view.js"></script>
-        <script src="{{ url('') }}/assets/js/main.js"></script>
+        <script src="{{ url('') }}/front_assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/vendor/jquery.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/popper.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/bootstrap.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/slick.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/ajax-form.js"></script>
+        <script src="{{ url('') }}/front_assets/js/paroller.js"></script>
+        <script src="{{ url('') }}/front_assets/js/wow.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/js_isotope.pkgd.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/imagesloaded.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/parallax.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.waypoints.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.counterup.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.scrollUp.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.meanmenu.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/parallax-scroll.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/element-in-view.js"></script>
+        <script src="{{ url('') }}/front_assets/js/main.js"></script>
     </body>
 </html>

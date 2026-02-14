@@ -7,7 +7,7 @@
                             <div class="footer-widget mb-30">                                
                                 <div class="f-about mb-20">
                                     <div class="f-widget-title">
-                                        <h5> <img src="{{ url('') }}/assets/img/icon/menu-icon.png" alt="img"> MENU</h5>
+                                        <h5> <img src="{{ url('') }}/front_assets/img/icon/menu-icon.png" alt="img"> MENU</h5>
                                     </div>
                                      <p>In industry, the heartbeat of modern civilization resonates through the relentless pursuit of progress.</p>
                                     
@@ -62,8 +62,8 @@
                                 </div>
                                 <div class="footer-link">
                                     <ul>                                        
-                                        <li><a href="{{ url('') }}/#"><img src="{{ url('') }}/assets/img/icon/gplay-btn.png" alt="img"></a></li>
-                                        <li><a href="{{ url('') }}/#"> <img src="{{ url('') }}/assets/img/icon/app-strore-btn.png" alt="img"></a></li>
+                                        <li><a href="{{ url('') }}/#"><img src="{{ url('') }}/front_assets/img/icon/gplay-btn.png" alt="img"></a></li>
+                                        <li><a href="{{ url('') }}/#"> <img src="{{ url('') }}/front_assets/img/icon/app-strore-btn.png" alt="img"></a></li>
                                     </ul>
                                 </div>
                             </div>
