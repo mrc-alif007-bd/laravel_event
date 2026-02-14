@@ -1,31 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Admin;
+namespace App\Http\Controllers\Auth\User;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
-    public function create()
+    public function create(): View
     {
-        return view('auth.admin_login');
+        return view('auth.login');
     }
 
     public function store(Request $request): RedirectResponse
     {
-        
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string'],
         ]);
 
-        if(! Auth::guard('admin')->attempt($request->only('email', 'password'), $request->boolean('remember')))
-        {
+        if (! Auth::guard('web')->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             return back()
                 ->withErrors(['email' => trans('auth.failed')])
                 ->withInput($request->except('password'));
@@ -33,18 +31,16 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->intended(RouteServiceProvider::USER_DASHBOARD);
     }
 
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        return redirect('/user/login');
     }
-
 }

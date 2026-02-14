@@ -1,12 +1,17 @@
 <?php
 
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\VenueController;
+use App\Http\Controllers\{
+    BookingController,
+    CategoryController,
+    EventController,
+    IndexController,
+    PaymentController,
+    ProfileController,
+    VenueController
+};
+use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\Auth\User\LoginController as UserLoginController;
+use App\Http\Controllers\Auth\User\RegisterController as UserRegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,62 +19,79 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| Here is where you can register web routes for your application.
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('home');
-Route::get('/about', [IndexController::class, 'about']);
-Route::get('/venue', [IndexController::class, 'venue']);
-Route::get('/contact', [IndexController::class, 'contact']);
-Route::get('/services', [IndexController::class, 'services']);
-Route::get('/blog', [IndexController::class, 'blog']);
+// Public Routes
+Route::controller(IndexController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/venue', 'venue')->name('venue');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::get('/services', 'services')->name('services');
+    Route::get('/blog', 'blog')->name('blog');
+    Route::post('/', 'booking')->name('booking.store');
+});
 
-Route::post('/', [IndexController::class, 'booking'])->name('store');
-Route::get('/payment/{bookingId}', [PaymentController::class, 'show'])->name('payment.show'); // Payment page
-Route::post('/payment/{bookingId}/complete', [PaymentController::class, 'complete'])->name('payment.complete'); // Process payment
+// Payment Routes
+Route::prefix('payment')->name('payment.')->controller(PaymentController::class)->group(function () {
+    Route::get('/{bookingId}', 'show')->name('show');
+    Route::post('/{bookingId}/complete', 'complete')->name('complete');
+});
 
-
+// Invoice Route
 Route::get('/invoice/{bookingId}', function ($bookingId) {
     $booking = \App\Models\Booking::findOrFail($bookingId);
     return view('invoice', compact('booking'));
 })->name('invoice');
 
-
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Guest Admin Routes
+Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(function () {
+    Route::get('login', [AdminLoginController::class, 'create'])->name('login');
+    Route::post('login', [AdminLoginController::class, 'store']);
 });
 
-//  ................ admin login , 
+// Guest User Routes (Login & Register)
+Route::prefix('user')->name('user.')->middleware('guest:web')->group(function () {
+    // Login Routes
+    Route::get('login', [UserLoginController::class, 'create'])->name('login');
+    Route::post('login', [UserLoginController::class, 'store']);
 
-Route::middleware('guest:admin')->prefix('admin')->group(function () {
-
-    Route::get('login', [App\Http\Controllers\Auth\Admin\LoginController::class, 'create'])->name('admin.login');
-    Route::post('login', [App\Http\Controllers\Auth\Admin\LoginController::class, 'store']);
-
-    // Route::get('register', [App\Http\Controllers\Auth\Admin\RegisterController::class, 'create'])->name('admin.register');
-    // Route::post('register', [App\Http\Controllers\Auth\Admin\RegisterController::class, 'store']);
-
+    // Register Routes
+    Route::get('register', [UserRegisterController::class, 'create'])->name('register');
+    Route::post('register', [UserRegisterController::class, 'store']);
 });
 
-Route::middleware('auth:admin')->prefix('admin')->group(function () {
+// Authenticated User Routes (Profile & Dashboard)
+Route::middleware('auth:web')->group(function () {
+    // Dashboard
+    Route::get('/dashboard', fn() => view('backend.dashboard'))->name('dashboard');
+    Route::get('/user/dashboard', fn() => view('backend.dashboard'))->name('user.dashboard');
 
-    Route::post('logout', [App\Http\Controllers\Auth\Admin\LoginController::class, 'destroy'])->name('admin.logout');
+    // Profile Routes
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::patch('/profile', 'update')->name('profile.update');
+        Route::delete('/profile', 'destroy')->name('profile.destroy');
+    });
 
-    Route::view('/dashboard', 'backend.admin_dashboard');
+    // User Logout
+    Route::post('/user/logout', [UserLoginController::class, 'destroy'])->name('user.logout');
+});
 
-    Route::resource('event', EventController::class);
-    Route::resource('category', CategoryController::class);
-    Route::resource('venue', VenueController::class);
-    Route::resource('booking', BookingController::class);
+// Authenticated Admin Routes
+Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
+    Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
+    Route::get('/dashboard', fn() => view('backend.admin_dashboard'))->name('dashboard');
+
+    // Resource Routes
+    Route::resources([
+        'event' => EventController::class,
+        'category' => CategoryController::class,
+        'venue' => VenueController::class,
+        'booking' => BookingController::class,
+    ]);
 });
 
 require __DIR__ . '/auth.php';
