@@ -11,6 +11,12 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
+
+    public function index(): View
+    {
+        return view('backend.users.user_list');
+    }
+
     public function create(): View
     {
         return view('auth.login');

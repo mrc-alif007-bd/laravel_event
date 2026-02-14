@@ -21,7 +21,7 @@ class RegisterController extends Controller
     public function create(): View
     {
         // Changed from 'auth.register' to 'auth.user.register' to match our view path
-        return view('auth.user.register');
+        return view('auth.register');
     }
 
     /**

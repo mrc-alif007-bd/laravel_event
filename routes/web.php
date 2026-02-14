@@ -91,6 +91,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function
         'category' => CategoryController::class,
         'venue' => VenueController::class,
         'booking' => BookingController::class,
+        'users' => UserLoginController::class
     ]);
 });
 

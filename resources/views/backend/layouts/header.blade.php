@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="{{url('')}}/index.html" class="logo logo-dark">
+                <a href="{{ route('user.dashboard') }}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{url('')}}/dist/assets/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="{{url('')}}/index.html" class="logo logo-light">
+                <a href="{{ route('user.dashboard') }}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{url('')}}/dist/assets/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -236,13 +236,13 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{url('')}}/#"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> Profile</a>
                     <a class="dropdown-item" href="{{url('')}}/#"><i class="mdi mdi-wallet font-size-17 align-middle me-1"></i> My Wallet</a>
                     <a class="dropdown-item d-flex align-items-center" href="{{url('')}}/#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
                     <a class="dropdown-item" href="{{url('')}}/#"><i class="mdi mdi-lock-open-outline font-size-17 align-middle me-1"></i> Lock screen</a>
                     <div class="dropdown-divider"></div>
 
-                    <form action="{{route ('logout')}}" method="post">
+                    <form action="{{ route('user.logout') }}" method="post">
                         <button type="submit"><i class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> Logout</button>
                         @csrf
                     </form>
