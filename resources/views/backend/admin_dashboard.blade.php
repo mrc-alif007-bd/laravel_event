@@ -10,16 +10,16 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{url('')}}/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{url('')}}/dist/assets/images/favicon.ico">
 
-        <link href="{{url('')}}/assets/libs/chartist/chartist.min.css" rel="stylesheet">
+        <link href="{{url('')}}/dist/assets/libs/chartist/chartist.min.css" rel="stylesheet">
 
         <!-- Bootstrap Css -->
-        <link href="{{url('')}}/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <link href="{{url('')}}/dist/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
         <!-- Icons Css -->
-        <link href="{{url('')}}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+        <link href="{{url('')}}/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css">
         <!-- App Css-->
-        <link href="{{url('')}}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+        <link href="{{url('')}}/dist/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <div class="mb-4">
                                     <div class="float-start mini-stat-img me-4">
-                                        <img src="{{url('')}}/assets/images/services-icon/01.png" alt="">
+                                        <img src="{{url('')}}/dist/assets/images/services-icon/01.png" alt="">
                                     </div>
                                     <h5 class="font-size-16 text-uppercase text-white-50">Orders</h5>
                                     <h4 class="fw-medium font-size-24">1,685 <i
@@ -93,7 +93,7 @@
                             <div class="card-body">
                                 <div class="mb-4">
                                     <div class="float-start mini-stat-img me-4">
-                                        <img src="{{url('')}}/assets/images/services-icon/02.png" alt="">
+                                        <img src="{{url('')}}/dist/assets/images/services-icon/02.png" alt="">
                                     </div>
                                     <h5 class="font-size-16 text-uppercase text-white-50">Revenue</h5>
                                     <h4 class="fw-medium font-size-24">52,368 <i
@@ -117,7 +117,7 @@
                             <div class="card-body">
                                 <div class="mb-4">
                                     <div class="float-start mini-stat-img me-4">
-                                        <img src="{{url('')}}/assets/images/services-icon/03.png" alt="">
+                                        <img src="{{url('')}}/dist/assets/images/services-icon/03.png" alt="">
                                     </div>
                                     <h5 class="font-size-16 text-uppercase text-white-50">Average Price</h5>
                                     <h4 class="fw-medium font-size-24">15.8 <i
@@ -141,7 +141,7 @@
                             <div class="card-body">
                                 <div class="mb-4">
                                     <div class="float-start mini-stat-img me-4">
-                                        <img src="{{url('')}}/assets/images/services-icon/04.png" alt="">
+                                        <img src="{{url('')}}/dist/assets/images/services-icon/04.png" alt="">
                                     </div>
                                     <h5 class="font-size-16 text-uppercase text-white-50">Product Sold</h5>
                                     <h4 class="fw-medium font-size-24">2436 <i
@@ -184,7 +184,7 @@
                                                 <th scope="row">#14256</th>
                                                 <td>
                                                     <div>
-                                                        <img src="{{url('')}}/assets/images/users/user-2.jpg" alt=""
+                                                        <img src="{{url('')}}/dist/assets/images/users/user-2.jpg" alt=""
                                                             class="avatar-xs rounded-circle me-2"> Philip Smead
                                                     </div>
                                                 </td>
@@ -201,7 +201,7 @@
                                                 <th scope="row">#14261</th>
                                                 <td>
                                                     <div>
-                                                        <img src="{{url('')}}/assets/images/users/user-2.jpg" alt=""
+                                                        <img src="{{url('')}}/dist/assets/images/users/user-2.jpg" alt=""
                                                             class="avatar-xs rounded-circle me-2"> Philip Smead
                                                     </div>
                                                 </td>
@@ -238,21 +238,21 @@
     @endsection
 
     @section("scripts")
-    <script src="{{url('')}}/assets/libs/jquery/jquery.min.js"></script>
-    <script src="{{url('')}}/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{url('')}}/assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="{{url('')}}/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="{{url('')}}/assets/libs/node-waves/waves.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/jquery/jquery.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/node-waves/waves.min.js"></script>
 
 
     <!-- Peity chart-->
-    <script src="{{url('')}}/assets/libs/peity/jquery.peity.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/peity/jquery.peity.min.js"></script>
 
     <!-- Plugin Js-->
-    <script src="{{url('')}}/assets/libs/chartist/chartist.min.js"></script>
-    <script src="{{url('')}}/assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/chartist/chartist.min.js"></script>
+    <script src="{{url('')}}/dist/assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
 
-    <script src="{{url('')}}/assets/js/pages/dashboard.init.js"></script>
+    <script src="{{url('')}}/dist/assets/js/pages/dashboard.init.js"></script>
 
-    <script src="{{url('')}}/assets/js/app.js"></script>
+    <script src="{{url('')}}/dist/assets/js/app.js"></script>
     @endsection

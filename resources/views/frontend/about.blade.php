@@ -6,21 +6,21 @@
         <title>Dahotel - Luxury Hotel HTML Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="{{ url('') }}/assets/img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ url('') }}/front_assets/img/favicon.ico">
         <!-- Place favicon.ico in the root directory -->
 
 		<!-- CSS here -->
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/animate.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/fontawesome-pro/css/all.min.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/dripicons.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/slick.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/meanmenu.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/default.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/style.css">
-        <link rel="stylesheet" href="{{ url('') }}/assets/css/responsive.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/animate.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/fontawesome-pro/css/all.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/dripicons.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/slick.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/meanmenu.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/default.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/style.css">
+        <link rel="stylesheet" href="{{ url('') }}/front_assets/css/responsive.css">
     </head>
     <body>
         <!-- header -->
@@ -42,7 +42,7 @@
                               
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ url('') }}/assets/index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ url('') }}/front_assets/index.html">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">About</li>
                                     </ol>
                                 </nav>
@@ -61,7 +61,7 @@
                     <div class="row justify-content-center align-items-center">
                          <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="p-relative  wow fadeInLeft animated" data-animation="fadeInLeft" data-delay=".4s">
-                                <img src="{{ url('') }}/assets/img/features/feature.png" alt="img">  
+                                <img src="{{ url('') }}/front_assets/img/features/feature.png" alt="img">  
                             </div>
                         </div>
                         
@@ -151,9 +151,9 @@
                     <div class="row justify-content-center align-items-center">
                          <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="s-about-img p-relative  wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
-                                <a href="{{ url('') }}/assets/https://www.youtube.com/watch?v=gyGsPlt06bo" class="popup-video"> <img src="{{ url('') }}/assets/img/features/about.jpg" alt="img">   </a>
+                                <a href="{{ url('') }}/front_assets/https://www.youtube.com/watch?v=gyGsPlt06bo" class="popup-video"> <img src="{{ url('') }}/front_assets/img/features/about.jpg" alt="img">   </a>
                                <div class="about-icon">
-                                     <img src="{{ url('') }}/assets/img/features/since.png" alt="img">   
+                                     <img src="{{ url('') }}/front_assets/img/features/since.png" alt="img">   
                                 </div>
                             </div>
                           
@@ -170,27 +170,27 @@
                          <div class="col-lg-12 col-md-12 col-sm-12 pr-30">
                            <div class="feature-slider-active">                               
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>Minimal Duplex Room /</h2>
                                     </div>
                                </div>                          
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>wifi bed water house /</h2>
                                     </div>
                                </div>
                            
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>free wifi zone /</h2>
                                     </div>
                                </div>
                              
                                <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
+                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
                                     <div class="text">
                                         <h2>wifi bed water house /</h2>
                                     </div>
@@ -223,7 +223,7 @@
                                             <h6>Rosalina William</h6>
                                             <span>ceo</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar.png" alt="img">
                                     </div>
                                 </div>
                                 <div class="single-testimonial">
@@ -234,7 +234,7 @@
                                             <h6>Nelson Helson</h6>
                                             <span>founder</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_02.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_02.png" alt="img">
                                     </div>
                                 </div>
                                <div class="single-testimonial">
@@ -245,7 +245,7 @@
                                             <h6>Tromazo Zelson</h6>
                                             <span>designer</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_03.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_03.png" alt="img">
                                     </div>
                                 </div>
                                    <div class="single-testimonial">
@@ -256,7 +256,7 @@
                                             <h6>Rosalina William</h6>
                                             <span>ceo</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar.png" alt="img">
                                     </div>
                                 </div>
                                 <div class="single-testimonial">
@@ -267,7 +267,7 @@
                                             <h6>Nelson Helson</h6>
                                             <span>founder</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_02.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_02.png" alt="img">
                                     </div>
                                 </div>
                                <div class="single-testimonial">
@@ -278,7 +278,7 @@
                                             <h6>Tromazo Zelson</h6>
                                             <span>designer</span>
                                         </div>
-                                         <img src="{{ url('') }}/assets/img/testimonial/testi_avatar_03.png" alt="img">
+                                         <img src="{{ url('') }}/front_assets/img/testimonial/testi_avatar_03.png" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -296,38 +296,38 @@
                      <div class="row">
                         <div class="col-lg-2 col-sm-6">
                             <div class="instagram-box">
-                                 <img src="{{ url('') }}/assets/img/bg/ins-img-01.png" alt="img">
-                                <div class="hover"><a href="{{ url('') }}/assets/#"><img src="{{ url('') }}/assets/img/icon/instagram-icon.png" alt="img"></a></div>
+                                 <img src="{{ url('') }}/front_assets/img/bg/ins-img-01.png" alt="img">
+                                <div class="hover"><a href="{{ url('') }}/front_assets/#"><img src="{{ url('') }}/front_assets/img/icon/instagram-icon.png" alt="img"></a></div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-sm-6">
                             <div class="instagram-box">
-                                 <img src="{{ url('') }}/assets/img/bg/ins-img-02.png" alt="img">
-                                <div class="hover"><a href="{{ url('') }}/assets/#"><img src="{{ url('') }}/assets/img/icon/instagram-icon.png" alt="img"></a></div>
+                                 <img src="{{ url('') }}/front_assets/img/bg/ins-img-02.png" alt="img">
+                                <div class="hover"><a href="{{ url('') }}/front_assets/#"><img src="{{ url('') }}/front_assets/img/icon/instagram-icon.png" alt="img"></a></div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-sm-6">
                             <div class="instagram-box">
-                                 <img src="{{ url('') }}/assets/img/bg/ins-img-03.png" alt="img">
-                                 <div class="hover"><a href="{{ url('') }}/assets/#"><img src="{{ url('') }}/assets/img/icon/instagram-icon.png" alt="img"></a></div>
+                                 <img src="{{ url('') }}/front_assets/img/bg/ins-img-03.png" alt="img">
+                                 <div class="hover"><a href="{{ url('') }}/front_assets/#"><img src="{{ url('') }}/front_assets/img/icon/instagram-icon.png" alt="img"></a></div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-sm-6">
                             <div class="instagram-box">
-                                 <img src="{{ url('') }}/assets/img/bg/ins-img-04.png" alt="img">
-                                <div class="hover"><a href="{{ url('') }}/assets/#"><img src="{{ url('') }}/assets/img/icon/instagram-icon.png" alt="img"></a></div>
+                                 <img src="{{ url('') }}/front_assets/img/bg/ins-img-04.png" alt="img">
+                                <div class="hover"><a href="{{ url('') }}/front_assets/#"><img src="{{ url('') }}/front_assets/img/icon/instagram-icon.png" alt="img"></a></div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-sm-6">
                             <div class="instagram-box">
-                                 <img src="{{ url('') }}/assets/img/bg/ins-img-05.png" alt="img">
-                                 <div class="hover"><a href="{{ url('') }}/assets/#"><img src="{{ url('') }}/assets/img/icon/instagram-icon.png" alt="img"></a></div>
+                                 <img src="{{ url('') }}/front_assets/img/bg/ins-img-05.png" alt="img">
+                                 <div class="hover"><a href="{{ url('') }}/front_assets/#"><img src="{{ url('') }}/front_assets/img/icon/instagram-icon.png" alt="img"></a></div>
                             </div>
                         </div>
                        <div class="col-lg-2 col-sm-6">
                             <div class="instagram-box">
-                                 <img src="{{ url('') }}/assets/img/bg/ins-img-06.png" alt="img">
-                                 <div class="hover"><a href="{{ url('') }}/assets/#"><img src="{{ url('') }}/assets/img/icon/instagram-icon.png" alt="img"></a></div>
+                                 <img src="{{ url('') }}/front_assets/img/bg/ins-img-06.png" alt="img">
+                                 <div class="hover"><a href="{{ url('') }}/front_assets/#"><img src="{{ url('') }}/front_assets/img/icon/instagram-icon.png" alt="img"></a></div>
                             </div>
                         </div>
                     </div>
@@ -366,24 +366,24 @@
         @include ("frontend.layouts.footer")
         <!-- footer-end -->
 		<!-- JS here -->
-        <script src="{{ url('') }}/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="{{ url('') }}/assets/js/vendor/jquery.min.js"></script>
-        <script src="{{ url('') }}/assets/js/popper.min.js"></script>
-        <script src="{{ url('') }}/assets/js/bootstrap.min.js"></script>
-        <script src="{{ url('') }}/assets/js/slick.min.js"></script>
-        <script src="{{ url('') }}/assets/js/ajax-form.js"></script>
-        <script src="{{ url('') }}/assets/js/paroller.js"></script>
-        <script src="{{ url('') }}/assets/js/wow.min.js"></script>
-        <script src="{{ url('') }}/assets/js/js_isotope.pkgd.min.js"></script>
-        <script src="{{ url('') }}/assets/js/imagesloaded.min.js"></script>
-        <script src="{{ url('') }}/assets/js/parallax.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.waypoints.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.counterup.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.meanmenu.min.js"></script>
-        <script src="{{ url('') }}/assets/js/parallax-scroll.js"></script>
-        <script src="{{ url('') }}/assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="{{ url('') }}/assets/js/element-in-view.js"></script>
-        <script src="{{ url('') }}/assets/js/main.js"></script>
+        <script src="{{ url('') }}/front_assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/vendor/jquery.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/popper.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/bootstrap.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/slick.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/ajax-form.js"></script>
+        <script src="{{ url('') }}/front_assets/js/paroller.js"></script>
+        <script src="{{ url('') }}/front_assets/js/wow.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/js_isotope.pkgd.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/imagesloaded.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/parallax.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.waypoints.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.counterup.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.scrollUp.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.meanmenu.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/parallax-scroll.js"></script>
+        <script src="{{ url('') }}/front_assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="{{ url('') }}/front_assets/js/element-in-view.js"></script>
+        <script src="{{ url('') }}/front_assets/js/main.js"></script>
     </body>
 </html>
