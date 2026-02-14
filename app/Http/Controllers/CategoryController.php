@@ -30,19 +30,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'c_name' => 'required|min:3|max:50',
-            'description' => 'required',
+            'name' => 'required|min:3|max:100', // Changed from c_name to name, max 100 to match migration
+            'description' => 'nullable|max:200', // Changed to nullable and max 200 to match migration
         ]);
-
-
 
         Category::create([
-            'name'        => $request->c_name,
+            'name' => $request->name, // Changed from c_name to name
             'description' => $request->description,
-
         ]);
 
-        return redirect()->route('category.index')->with('success', 'Category added');
+        return redirect()->route('admin.category.index')->with('success', 'Category added successfully');
     }
 
     /**
@@ -50,7 +47,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('backend.category.category_show', compact('category'));
     }
 
     /**
@@ -67,19 +64,16 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'c_name' => 'required|min:3|max:50',
-            'description' => 'required',
+            'name' => 'required|min:3|max:100', // Changed from c_name to name, max 100 to match migration
+            'description' => 'nullable|max:200', // Changed to nullable and max 200 to match migration
         ]);
-
-
 
         $category->update([
-            'name'        => $request->c_name,
+            'name' => $request->name, // Changed from c_name to name
             'description' => $request->description,
-
         ]);
 
-        return redirect()->route('category.index')->with('success', 'Category Updated');
+        return redirect()->route('admin.category.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -87,10 +81,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $category->delete();
 
-    $category->delete();
-
-    return redirect()->route('category.index')
-        ->with('success', 'Successfully Deleted');
+        return redirect()->route('admin.category.index')
+            ->with('success', 'Category deleted successfully');
     }
 }

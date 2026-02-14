@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Category;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 
@@ -14,7 +13,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::with('venue')->latest()->get();
         return view('backend.events.event_list', compact('events'));
     }
 
@@ -23,10 +22,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $venues     = Venue::all();
+        $venues = Venue::all();
 
-        return view('backend.events.add_events', compact('categories', 'venues'));
+        return view('backend.events.add_events', compact('venues'));
     }
 
     /**
@@ -39,8 +37,8 @@ class EventController extends Controller
             'title'       => 'required|min:3|max:50',
             'venue_id'    => 'required|exists:venues,id',
             'price'       => 'required|numeric',
-            'description' => 'required',
-            'status'      => 'required',
+            'description' => 'nullable|max:200',
+            'status'      => 'required|in:1,2,3',
             'image'       => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
@@ -62,7 +60,7 @@ class EventController extends Controller
             'image'       => $event_img,
         ]);
 
-        return redirect()->route('event.index')
+        return redirect()->route('admin.event.index')
             ->with('success', 'Event added successfully');
     }
 
@@ -71,10 +69,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        $categories = Category::all();
-        $venues     = Venue::all();
+        $venues = Venue::all();
 
-        return view('backend.events.event_edit', compact('event', 'categories', 'venues'));
+        return view('backend.events.event_edit', compact('event', 'venues'));
     }
 
     /**
@@ -87,8 +84,8 @@ class EventController extends Controller
             'title'       => 'required|min:3|max:50',
             'venue_id'    => 'required|exists:venues,id',
             'price'       => 'required|numeric',
-            'description' => 'required',
-            'status'      => 'required',
+            'description' => 'nullable|max:200',
+            'status'      => 'required|in:1,2,3',
             'image'       => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
@@ -115,7 +112,7 @@ class EventController extends Controller
             'image'       => $event_img,
         ]);
 
-        return redirect()->route('event.index')
+        return redirect()->route('admin.event.index')
             ->with('success', 'Event updated successfully');
     }
 
@@ -130,7 +127,7 @@ class EventController extends Controller
 
         $event->delete();
 
-        return redirect()->route('event.index')
+        return redirect()->route('admin.event.index')
             ->with('success', 'Event deleted successfully');
     }
 }
