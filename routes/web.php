@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     IndexController,
     PaymentController,
     ProfileController,
+    UserController,
     VenueController
 };
 use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
@@ -68,6 +69,7 @@ Route::middleware('auth:web')->group(function () {
     // Dashboard
     Route::get('/dashboard', fn() => view('backend.dashboard'))->name('dashboard');
     Route::get('/user/dashboard', fn() => view('backend.dashboard'))->name('user.dashboard');
+    Route::get('/user/my-bookings', [BookingController::class, 'myBookings'])->name('user.bookings');
 
     // Profile Routes
     Route::controller(ProfileController::class)->group(function () {
@@ -85,14 +87,14 @@ Route::patch('admin/venue/{id}/toggle-status', [VenueController::class, 'toggleS
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
     Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
     Route::get('/dashboard', fn() => view('backend.admin_dashboard'))->name('dashboard');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
     // Resource Routes
     Route::resources([
         'event' => EventController::class,
         'category' => CategoryController::class,
         'venue' => VenueController::class,
-        'booking' => BookingController::class,
-        'users' => UserLoginController::class
+        'booking' => BookingController::class
     ]);
 });
 

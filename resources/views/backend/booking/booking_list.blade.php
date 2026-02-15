@@ -3,7 +3,7 @@
 @section('head')
     <head>
         <meta charset="utf-8">
-        <title>User List | Veltrix - Admin & Dashboard Template</title>
+        <title>Booking List | Veltrix - Admin & Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
@@ -28,10 +28,10 @@
                 <div class="page-title-box">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                            <h6 class="page-title">User Management</h6>
+                            <h6 class="page-title">Booking Management</h6>
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Users</li>
+                                <li class="breadcrumb-item active" aria-current="page">Bookings</li>
                             </ol>
                         </div>
                     </div>
@@ -56,47 +56,76 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <h4 class="card-title">All Users</h4>
-                                    <span class="badge bg-primary">{{ $users->count() }} Total</span>
+                                    <h4 class="card-title">All Bookings</h4>
+                                    <span class="badge bg-primary">{{ $bookings->count() }} Total</span>
                                 </div>
 
                                 <p class="card-title-desc mb-4">
-                                    View all registered users and their account details.
+                                    View all ticket bookings, payment details, and current booking status in one place.
                                 </p>
 
                                 <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th>#ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Email Verified</th>
-                                            <th>Registered At</th>
+                                            <th>Customer</th>
+                                            <th>Event</th>
+                                            <th>Tickets</th>
+                                            <th>Total Amount</th>
+                                            <th>Booking Status</th>
+                                            <th>Payment Status</th>
+                                            <th>Method</th>
+                                            <th>Booked At</th>
+                                            <th>Invoice</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($users as $user)
+                                        @forelse ($bookings as $booking)
                                             <tr>
-                                                <td>#{{ $user->id }}</td>
-                                                <td><strong>{{ $user->name }}</strong></td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $user->phone ?: 'N/A' }}</td>
+                                                <td>#{{ $booking->id }}</td>
                                                 <td>
-                                                    @if ($user->email_verified_at)
-                                                        <span class="badge bg-success">Verified</span>
+                                                    <strong>{{ $booking->name }}</strong><br>
+                                                    <small class="text-muted">{{ $booking->email }}</small><br>
+                                                    <small class="text-muted">{{ $booking->phone ?: 'N/A' }}</small>
+                                                </td>
+                                                <td>{{ $booking->event?->title ?? 'Deleted Event' }}</td>
+                                                <td><span class="badge bg-info">{{ $booking->number_of_ticket }}</span></td>
+                                                <td>${{ number_format((float) $booking->total_amount, 2) }}</td>
+                                                <td>
+                                                    @php $status = strtolower((string) $booking->status); @endphp
+                                                    @if ($status === 'confirmed')
+                                                        <span class="badge bg-success">Confirmed</span>
+                                                    @elseif ($status === 'pending')
+                                                        <span class="badge bg-warning text-dark">Pending</span>
                                                     @else
-                                                        <span class="badge bg-warning text-dark">Not Verified</span>
+                                                        <span class="badge bg-danger">{{ ucfirst($booking->status) }}</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ $user->created_at?->format('M d, Y h:i A') }}</td>
+                                                <td>
+                                                    @php $paymentStatus = strtolower((string) $booking->payment_status); @endphp
+                                                    @if ($paymentStatus === 'paid')
+                                                        <span class="badge bg-success">Paid</span>
+                                                    @elseif ($paymentStatus === 'pending')
+                                                        <span class="badge bg-warning text-dark">Pending</span>
+                                                    @else
+                                                        <span class="badge bg-danger">{{ ucfirst($booking->payment_status) }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $booking->payment_method ?: 'N/A' }}</td>
+                                                <td>{{ $booking->created_at?->format('M d, Y h:i A') }}</td>
+                                                <td>
+                                                    <a href="{{ route('invoice', $booking->id) }}"
+                                                        class="btn btn-sm btn-outline-primary">
+                                                        <i class="mdi mdi-file-document-outline me-1"></i> View
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="6" class="text-center py-4">
+                                                <td colspan="10" class="text-center py-4">
                                                     <div class="text-muted">
                                                         <i class="mdi mdi-information-outline display-4"></i>
-                                                        <p class="mt-2">No users found.</p>
+                                                        <p class="mt-2">No bookings found.</p>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -158,19 +187,23 @@
                     }
                 ],
                 language: {
-                    emptyTable: "No users available",
-                    info: "Showing _START_ to _END_ of _TOTAL_ users",
-                    infoEmpty: "Showing 0 to 0 of 0 users",
-                    infoFiltered: "(filtered from _MAX_ total users)",
-                    lengthMenu: "Show _MENU_ users",
+                    emptyTable: "No bookings available",
+                    info: "Showing _START_ to _END_ of _TOTAL_ bookings",
+                    infoEmpty: "Showing 0 to 0 of 0 bookings",
+                    infoFiltered: "(filtered from _MAX_ total bookings)",
+                    lengthMenu: "Show _MENU_ bookings",
                     search: "Search:",
-                    zeroRecords: "No matching users found"
+                    zeroRecords: "No matching bookings found"
                 },
                 order: [
                     [0, 'desc']
                 ],
                 pageLength: 10,
-                responsive: true
+                responsive: true,
+                columnDefs: [{
+                    orderable: false,
+                    targets: [1, 9]
+                }]
             });
 
             setTimeout(function() {
