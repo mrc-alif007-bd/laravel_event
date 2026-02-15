@@ -8,14 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Venue extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'address',
         'city',
         'capacity',
         'description',
-        'image',
         'status',
+        'image'
+    ];
+
+    protected $casts = [
+        'capacity' => 'integer',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
 }
