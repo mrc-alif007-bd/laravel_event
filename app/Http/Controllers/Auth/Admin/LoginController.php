@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Auth\Admin;
 
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use App\Providers\RouteServiceProvider;
 
 class LoginController extends Controller
 {
@@ -44,7 +42,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        return redirect()->route('login');
     }
 
 }

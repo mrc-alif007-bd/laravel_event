@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth\User;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +30,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::USER_DASHBOARD);
+        return redirect()->route('user.dashboard');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -41,6 +40,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/user/login');
+        return redirect()->route('login');
     }
 }

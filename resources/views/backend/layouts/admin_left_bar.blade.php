@@ -14,6 +14,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('admin.profile.edit') }}" class="waves-effect">
+                        <i class="ti-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
                 <!-- Category Menu with Create Link -->
                 <li class="menu-title">Category Management</li>
                 <li>
