@@ -1,6 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('head')
+
     <head>
         <meta charset="utf-8">
         <title>My Bookings | Veltrix - Admin & Dashboard Template</title>
@@ -25,13 +26,30 @@
             <div class="container-fluid">
                 <div class="page-title-box">
                     <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h6 class="page-title">My Bookings</h6>
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">My Bookings</li>
-                            </ol>
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Left Side -->
+                                <div>
+                                    <h6 class="page-title mb-1">My Bookings</h6>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item">
+                                            <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            My Bookings
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <!-- Right Side -->
+                                <div>
+                                    <a href="{{ url('/venue') }}" class="btn btn-primary">
+                                        New Booking
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -62,7 +80,8 @@
                                             <tr>
                                                 <td>#{{ $booking->id }}</td>
                                                 <td>{{ $booking->event?->title ?? 'Deleted Event' }}</td>
-                                                <td><span class="badge bg-info">{{ $booking->number_of_ticket }}</span></td>
+                                                <td><span class="badge bg-info">{{ $booking->number_of_ticket }}</span>
+                                                </td>
                                                 <td>${{ number_format((float) $booking->total_amount, 2) }}</td>
                                                 <td>
                                                     @if (strtolower((string) $booking->status) === 'confirmed')
@@ -70,7 +89,8 @@
                                                     @elseif (strtolower((string) $booking->status) === 'pending')
                                                         <span class="badge bg-warning text-dark">Pending</span>
                                                     @else
-                                                        <span class="badge bg-danger">{{ ucfirst($booking->status) }}</span>
+                                                        <span
+                                                            class="badge bg-danger">{{ ucfirst($booking->status) }}</span>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -79,7 +99,8 @@
                                                     @elseif (strtolower((string) $booking->payment_status) === 'pending')
                                                         <span class="badge bg-warning text-dark">Pending</span>
                                                     @else
-                                                        <span class="badge bg-danger">{{ ucfirst($booking->payment_status) }}</span>
+                                                        <span
+                                                            class="badge bg-danger">{{ ucfirst($booking->payment_status) }}</span>
                                                     @endif
                                                 </td>
                                                 <td>{{ $booking->created_at?->format('M d, Y h:i A') }}</td>
