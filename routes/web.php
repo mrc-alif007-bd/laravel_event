@@ -80,6 +80,7 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/user/logout', [UserLoginController::class, 'destroy'])->name('user.logout');
 });
 
+Route::patch('admin/venue/{id}/toggle-status', [VenueController::class, 'toggleStatus'])->name('admin.venue.toggle-status');
 // Authenticated Admin Routes
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
     Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
