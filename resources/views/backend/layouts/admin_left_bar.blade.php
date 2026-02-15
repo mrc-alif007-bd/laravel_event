@@ -64,17 +64,12 @@
                     </a>
                 </li>
 
-                <!-- Users Menu -->
                 <li class="menu-title">User Management</li>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <a href="{{ route('admin.users.index') }}" class="waves-effect">
                         <i class="ti-user"></i>
                         <span>Users</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.users.index') }}"><i class="ti-list"></i> All Users</a></li>
-                        <li><a href="{{ route('admin.users.create') }}"><i class="ti-plus"></i> Create User</a></li>
-                    </ul>
                 </li>
 
                 <!-- Reports Section (Optional) -->
