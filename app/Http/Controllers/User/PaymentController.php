@@ -22,7 +22,6 @@ class PaymentController extends Controller
     // Show single payment
     public function show(Payment $payment)
     {
-        $this->authorize('view', $payment);
         return view('backend.user.payments.show', compact('payment'));
     }
 }
