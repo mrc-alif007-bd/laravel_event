@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class HomeController extends Controller
 {
@@ -42,9 +43,20 @@ class HomeController extends Controller
         return view('frontend.services');
     }
 
-    // Venues page
+    // Venues page - Show all events
     public function venues()
     {
-        return view('frontend.venue');
+        $events = Event::all();
+
+        return view('frontend.venue', compact('events'));
+    }
+
+    // Single event page
+    public function showEvent($id)
+    {
+        $event = Event::with(['venue', 'category', 'reviews'])
+            ->findOrFail($id);
+
+        return view('frontend.single-event', compact('event'));
     }
 }

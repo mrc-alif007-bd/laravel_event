@@ -50,7 +50,15 @@ Route::get('/booking', [HomeController::class, 'booking'])->name('home.booking')
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 Route::get('/services', [HomeController::class, 'services'])->name('home.services');
 Route::get('/venues', [HomeController::class, 'venues'])->name('home.venues');
-
+Route::get('/events', [HomeController::class, 'venues'])->name('events.index');
+Route::get('/event/{id}', [HomeController::class, 'showEvent'])->name('events.show');
+Route::post('/event/book/{id}', [App\Http\Controllers\BookingController::class, 'store'])->name('events.book');
+Route::post('/event/book/{id}', [App\Http\Controllers\BookingController::class, 'store'])->name('events.book');
+Route::get('/payment/{bookingId}', [App\Http\Controllers\BookingController::class, 'paymentPage'])->name('payment.page');
+Route::post('/payment/process/{bookingId}', [App\Http\Controllers\BookingController::class, 'processDummyPayment'])->name('payment.process');
+Route::get('/booking/confirmation/{bookingId}', [App\Http\Controllers\BookingController::class, 'confirmation'])->name('booking.confirmation');
+Route::get('/booking/ticket/{bookingId}', [App\Http\Controllers\BookingController::class, 'showDigitalTicket'])->name('booking.ticket');
+Route::get('/booking/ticket/{bookingId}/download', [App\Http\Controllers\BookingController::class, 'downloadTicket'])->name('ticket.download');
 /*
 |--------------------------------------------------------------------------
 | Guest User Routes (Login & Register)
@@ -64,9 +72,6 @@ Route::prefix('user')->name('user.')->middleware('guest:web')->group(function ()
     // Register
     Route::get('register', [UserRegisterController::class, 'create'])->name('register');
     Route::post('register', [UserRegisterController::class, 'store']);
-
-    // Logout
-    Route::post('logout', [UserLoginController::class, 'destroy'])->name('logout');
 });
 
 /*
@@ -131,6 +136,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
 |--------------------------------------------------------------------------
 */
 Route::prefix('user')->name('user.')->middleware(['auth:web'])->group(function () {
+
+
+    // Logout
+    Route::post('logout', [UserLoginController::class, 'destroy'])->name('logout');
 
     // User Dashboard
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
