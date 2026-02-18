@@ -42,7 +42,10 @@ class EventController extends Controller
             'status' => 'required|integer|in:1,2,3'
         ]);
 
-        // Handle image upload if exists
+        // Set available tickets
+        $validated['available_tickets'] = $validated['total_tickets'];
+
+        // Handle image
         if ($request->hasFile('image')) {
             $fileName = time() . '_' . $request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('event_images'), $fileName);
