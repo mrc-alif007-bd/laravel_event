@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -12,7 +13,9 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::with('event')->latest()->get();
+
+        return view('backend.booking.booking_list', compact('bookings'));
     }
 
     /**
@@ -61,5 +64,23 @@ class BookingController extends Controller
     public function destroy(Booking $booking)
     {
         //
+    }
+
+    /**
+     * Display bookings for currently logged in user.
+     */
+    public function myBookings()
+    {
+        $user = Auth::user();
+
+        $bookings = Booking::with('event')
+            ->where(function ($query) use ($user) {
+                $query->where('user_id', $user->id)
+                    ->orWhere('email', $user->email);
+            })
+            ->latest()
+            ->get();
+
+        return view('backend.booking.my_booking_list', compact('bookings'));
     }
 }

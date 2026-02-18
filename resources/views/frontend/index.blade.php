@@ -57,7 +57,7 @@
                                          <h5 data-animation="fadeInUp" data-delay=".4s">LUXURY HOTEL & BEST RESORT</h5>
                                          <h2 data-animation="fadeInUp" data-delay=".4s">Enjoy A Luxury <span>Experience</span> </h2>                                        
                                           <div class="slider-btn mt-30 mb-105">     
-                                             <a href="{{ url('') }}/contact.html" class="btn ss-btn active mr-15" data-animation="fadeInLeft" data-delay=".4s">book a seat </a>
+                                             <a href="{{ url('') }}/venue" class="btn ss-btn active mr-15" data-animation="fadeInLeft" data-delay=".4s">book a seat </a>
                                         </div> 
                                     </div>
                                 </div>
@@ -252,32 +252,7 @@
                     </div>
                 </div>
             </div>
-            <!-- counter-area-end -->	
-             <!-- about-area -->
-            <section class="about-area about-p pt-120 pb-60 fix p-relative">
-                <div class="scrollbox2">
-                    <div class="scrollbox scrollbox--secondary scrollbox--reverse">
-                     <div class="scrollbox__item"> <div class="section-t"><h2>luxury Hotel / Quality Living In DaHotel</h2></div></div>
-                     <div class="scrollbox__item"> <div class="section-t"><h2>luxury Hotel / Quality Living In DaHotel</h2></div></div>
-                     <div class="scrollbox__item"> <div class="section-t"><h2>luxury Hotel / Quality Living In DaHotel</h2></div></div>
-                    </div>         
-                </div>                 
-                <div class="container">
-                    <div class="row justify-content-center align-items-center">
-                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="s-about-img p-relative  wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
-                                <a href="{{ url('') }}/https://www.youtube.com/watch?v=gyGsPlt06bo" class="popup-video"> <img src="{{ url('') }}/front_assets/img/features/about.jpg" alt="img">   </a>
-                               <div class="about-icon">
-                                     <img src="{{ url('') }}/front_assets/img/features/since.png" alt="img">   
-                                </div>
-                            </div>
-                          
-                        </div> 
-                    </div>
-                </div>
-            </section>
-            <!-- about-area-end -->
-            
+            <!-- counter-area-end -->	            
              <!-- room-area-->
             <section id="services" class="services-area pb-120">
               
@@ -319,7 +294,7 @@
                                     </div>
                                     <div class="day-book">
                                         <ul>
-                                            <li>$600/Night</li>
+                                            <li>$600</li>
                                             <li><a href="{{ url('') }}/contact.html">Book Now</a></li>
                                         </ul>
                                     </div>
@@ -418,45 +393,6 @@
                 </div>
             </section>
             <!-- room-area-end -->    
-            <!-- feature-area -->
-            <section class="feature-area2 p-relative pt-120 pb-120 fix" style="background: #2C4549;">              
-                <div class="container-fluid">
-                    <div class="row justify-content-center align-items-center">
-                         <div class="col-lg-12 col-md-12 col-sm-12 pr-30">
-                           <div class="feature-slider-active">                               
-                               <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
-                                    <div class="text">
-                                        <h2>Minimal Duplex Room /</h2>
-                                    </div>
-                               </div>                          
-                               <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
-                                    <div class="text">
-                                        <h2>wifi bed water house /</h2>
-                                    </div>
-                               </div>
-                           
-                               <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
-                                    <div class="text">
-                                        <h2>free wifi zone /</h2>
-                                    </div>
-                               </div>
-                             
-                               <div class="feature-slider-box">                                   
-                                    <img src="{{ url('') }}/front_assets/img/bg/feature-slider-img.png" alt="contact-bg-an-01">
-                                    <div class="text">
-                                        <h2>wifi bed water house /</h2>
-                                    </div>
-                               </div>
-                            </div>
-                        </div>
-					 
-                    </div>
-                </div>
-            </section>
-            <!-- feature-area-end -->
             <!-- pricing-area -->
             <section id="pricing" class="pricing-area pt-120 pb-60 fix p-relative">
                 <div class="container"> 

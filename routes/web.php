@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\{
+    AdminProfileController,
     BookingController,
     CategoryController,
     EventController,
     IndexController,
     PaymentController,
     ProfileController,
+    UserController,
     VenueController
 };
 use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
@@ -67,7 +69,8 @@ Route::prefix('user')->name('user.')->middleware('guest:web')->group(function ()
 Route::middleware('auth:web')->group(function () {
     // Dashboard
     Route::get('/dashboard', fn() => view('backend.dashboard'))->name('dashboard');
-    Route::get('/user/dashboard', fn() => view('backend.dashboard'))->name('user.dashboard');
+    Route::get('/user/dashboard', fn() => view('backend.user_dashboard'))->name('user.dashboard');
+    Route::get('/user/my-bookings', [BookingController::class, 'myBookings'])->name('user.bookings');
 
     // Profile Routes
     Route::controller(ProfileController::class)->group(function () {
@@ -80,18 +83,22 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/user/logout', [UserLoginController::class, 'destroy'])->name('user.logout');
 });
 
+Route::patch('admin/venue/{id}/toggle-status', [VenueController::class, 'toggleStatus'])->name('admin.venue.toggle-status');
 // Authenticated Admin Routes
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
     Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
     Route::get('/dashboard', fn() => view('backend.admin_dashboard'))->name('dashboard');
+    Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/password', [AdminProfileController::class, 'updatePassword'])->name('password.update');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
     // Resource Routes
     Route::resources([
         'event' => EventController::class,
         'category' => CategoryController::class,
         'venue' => VenueController::class,
-        'booking' => BookingController::class,
-        'users' => UserLoginController::class
+        'booking' => BookingController::class
     ]);
 });
 
