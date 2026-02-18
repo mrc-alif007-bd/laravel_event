@@ -4,26 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Booking extends Model
+class Review extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
-        'booking_code',
         'user_id',
         'event_id',
-        'number_of_tickets',
-        'ticket_price',
-        'discount_amount',
-        'total_amount',
-        'final_amount',
-        'status',
+        'rating',
+        'comment',
     ];
 
     // Relationships
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -32,10 +25,5 @@ class Booking extends Model
     public function event()
     {
         return $this->belongsTo(Event::class);
-    }
-
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
     }
 }

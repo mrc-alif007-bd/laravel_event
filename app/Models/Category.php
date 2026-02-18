@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name', 'description',
+        'name',
+        'description',
     ];
 
-    public function event()
+    // Relationships
+    public function events()
     {
         return $this->hasMany(Event::class);
     }
