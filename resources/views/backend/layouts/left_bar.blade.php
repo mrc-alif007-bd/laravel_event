@@ -14,16 +14,37 @@
                 <li class="menu-title">My Account</li>
 
                 <li>
-                    <a href="{{ route('profile.edit') }}" class="waves-effect">
+                    <a href="{{ route('user.profile.index') }}" class="waves-effect">
                         <i class="ti-user"></i>
                         <span>My Profile</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('user.bookings') }}" class="waves-effect">
+                    <a href="{{ route('user.bookings.index') }}" class="waves-effect">
                         <i class="ti-ticket"></i>
                         <span>My Bookings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('user.events.index') }}" class="waves-effect">
+                        <i class="ti-calendar"></i>
+                        <span>Events</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('user.payments.index') }}" class="waves-effect">
+                        <i class="ti-credit-card"></i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('user.reviews.index') }}" class="waves-effect">
+                        <i class="ti-star"></i>
+                        <span>My Reviews</span>
                     </a>
                 </li>
             </ul>

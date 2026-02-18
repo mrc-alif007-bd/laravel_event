@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\{
 // User controllers
 use App\Http\Controllers\User\{
     DashboardController as UserDashboardController,
-    UserController as UserProfileController,
+    ProfileController as UserProfileController,
     EventController as UserEventController,
     BookingController as UserBookingController,
     PaymentController as UserPaymentController,
@@ -77,9 +77,6 @@ Route::prefix('user')->name('user.')->middleware('guest:web')->group(function ()
 Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(function () {
     Route::get('login', [AdminLoginController::class, 'create'])->name('login');
     Route::post('login', [AdminLoginController::class, 'store']);
-
-    // Logout
-    Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
 });
 
 /*
@@ -88,6 +85,8 @@ Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(functio
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function () {
+
+    Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
 
     // Admin Dashboard
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
@@ -136,9 +135,6 @@ Route::prefix('user')->name('user.')->middleware(['auth:web'])->group(function (
     // User Dashboard
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
-    // User Profile
-    Route::resource('profile', UserProfileController::class)->only(['index', 'edit', 'update']);
-
     // Events (view only)
     Route::resource('events', UserEventController::class)->only(['index', 'show']);
 
@@ -151,8 +147,17 @@ Route::prefix('user')->name('user.')->middleware(['auth:web'])->group(function (
     // Reviews
     Route::resource('reviews', UserReviewController::class)->except(['edit', 'update']);
 
-    // Profile Management
-    Route::resource('profile', UserProfileController::class)->only(['edit', 'update']);
+    // Profile Management - Use explicit routes instead of resource
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [UserProfileController::class, 'index'])->name('index');
+        Route::get('/edit', [UserProfileController::class, 'edit'])->name('edit');
+        Route::put('/update', [UserProfileController::class, 'update'])->name('update');
+        Route::get('/change-password', [UserProfileController::class, 'changePasswordForm'])->name('change-password');
+        Route::post('/update-password', [UserProfileController::class, 'updatePassword'])->name('update-password');
+        Route::delete('/remove-avatar', [UserProfileController::class, 'removeAvatar'])->name('remove-avatar');
+        Route::post('/update-notifications', [UserProfileController::class, 'updateNotifications'])->name('update-notifications');
+        Route::get('/activity', [UserProfileController::class, 'activityLog'])->name('activity');
+    });
 });
 
 require __DIR__ . '/auth.php';

@@ -79,7 +79,8 @@ class ProfileController extends Controller
      */
     public function changePasswordForm()
     {
-        return view('backend.user.profile.change-password');
+        $user = Auth::guard('web')->user();
+        return view('backend.user.profile.change-password', compact('user'));
     }
 
     /**

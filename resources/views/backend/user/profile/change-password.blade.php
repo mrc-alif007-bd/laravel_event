@@ -75,6 +75,8 @@
                                                         {{ $user->email }}</p>
                                                     <p class="mb-2"><i class="mdi mdi-phone-outline me-2"></i>
                                                         {{ $user->phone ?? 'Not provided' }}</p>
+                                                    <p class="mb-2"><i class="mdi mdi-map-marker-outline me-2"></i>
+                                                        {{ $user->address ?? 'Address not provided' }}</p>
                                                     <p class="mb-2"><i class="mdi mdi-calendar-outline me-2"></i> Joined
                                                         {{ $user->created_at->format('M d, Y') }}</p>
                                                 </div>
@@ -90,6 +92,11 @@
                                                         Email Not Verified
                                                     </div>
                                                 @endif
+
+                                                <div class="alert alert-info mt-2 mb-0">
+                                                    <i class="mdi mdi-information-outline me-2"></i>
+                                                    Use a strong password that you don't use elsewhere.
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -109,6 +116,16 @@
                                                     </div>
                                                 @endif
 
+                                                @if (session('error'))
+                                                    <div class="alert alert-danger alert-dismissible fade show"
+                                                        role="alert">
+                                                        <i class="mdi mdi-alert-circle me-2"></i>
+                                                        {{ session('error') }}
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                @endif
+
                                                 @if ($errors->any())
                                                     <div class="alert alert-danger alert-dismissible fade show"
                                                         role="alert">
@@ -119,16 +136,6 @@
                                                                 <li>{{ $error }}</li>
                                                             @endforeach
                                                         </ul>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                @endif
-
-                                                @if (session('error'))
-                                                    <div class="alert alert-danger alert-dismissible fade show"
-                                                        role="alert">
-                                                        <i class="mdi mdi-alert-circle me-2"></i>
-                                                        {{ session('error') }}
                                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                             aria-label="Close"></button>
                                                     </div>
@@ -153,10 +160,10 @@
                                                                 onclick="togglePassword('current_password', this)">
                                                                 <i class="mdi mdi-eye-outline"></i>
                                                             </button>
+                                                            @error('current_password')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
                                                         </div>
-                                                        @error('current_password')
-                                                            <div class="text-danger small mt-1">{{ $message }}</div>
-                                                        @enderror
                                                         <small class="text-muted">Enter your current password to verify
                                                             it's you</small>
                                                     </div>
@@ -176,10 +183,53 @@
                                                                 onclick="togglePassword('new_password', this)">
                                                                 <i class="mdi mdi-eye-outline"></i>
                                                             </button>
+                                                            @error('new_password')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
                                                         </div>
-                                                        @error('new_password')
-                                                            <div class="text-danger small mt-1">{{ $message }}</div>
-                                                        @enderror
+                                                    </div>
+
+                                                    <!-- Password Strength Meter -->
+                                                    <div class="mb-3" id="password-strength" style="display: none;">
+                                                        <label class="form-label">Password Strength</label>
+                                                        <div class="progress" style="height: 5px;">
+                                                            <div class="progress-bar" id="password-strength-bar"
+                                                                role="progressbar" style="width: 0%;" aria-valuenow="0"
+                                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <small id="password-strength-text" class="text-muted"></small>
+                                                    </div>
+
+                                                    <!-- Password Requirements -->
+                                                    <div class="mb-4 p-3 bg-light rounded">
+                                                        <h6 class="mb-2">Password Requirements:</h6>
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li id="req-length" class="text-muted mb-1">
+                                                                <i
+                                                                    class="mdi mdi-close-circle-outline text-danger me-2"></i>
+                                                                At least 8 characters
+                                                            </li>
+                                                            <li id="req-uppercase" class="text-muted mb-1">
+                                                                <i
+                                                                    class="mdi mdi-close-circle-outline text-danger me-2"></i>
+                                                                At least one uppercase letter
+                                                            </li>
+                                                            <li id="req-lowercase" class="text-muted mb-1">
+                                                                <i
+                                                                    class="mdi mdi-close-circle-outline text-danger me-2"></i>
+                                                                At least one lowercase letter
+                                                            </li>
+                                                            <li id="req-number" class="text-muted mb-1">
+                                                                <i
+                                                                    class="mdi mdi-close-circle-outline text-danger me-2"></i>
+                                                                At least one number
+                                                            </li>
+                                                            <li id="req-special" class="text-muted mb-1">
+                                                                <i
+                                                                    class="mdi mdi-close-circle-outline text-danger me-2"></i>
+                                                                At least one special character (!@#$%^&*)
+                                                            </li>
+                                                        </ul>
                                                     </div>
 
                                                     <!-- Confirm New Password -->
@@ -198,21 +248,12 @@
                                                                 <i class="mdi mdi-eye-outline"></i>
                                                             </button>
                                                         </div>
-                                                        <div class="invalid-feedback d-block" id="password-match-error"
+                                                        <div class="invalid-feedback" id="password-match-error"
                                                             style="display: none;">
                                                             Passwords do not match
                                                         </div>
-                                                    </div>
-
-                                                    <!-- Password Requirements Info -->
-                                                    <div class="mb-4 p-3 bg-light rounded">
-                                                        <h6 class="mb-2">Password Requirements:</h6>
-                                                        <ul class="list-unstyled mb-0">
-                                                            <li class="text-muted mb-1">
-                                                                <i class="mdi mdi-information-outline text-info me-2"></i>
-                                                                Minimum 8 characters
-                                                            </li>
-                                                        </ul>
+                                                        <small class="text-muted">Re-enter your new password to
+                                                            confirm</small>
                                                     </div>
 
                                                     <div class="mb-3">
@@ -237,7 +278,8 @@
                                                         <div>
                                                             <h6 class="alert-heading">Password Security Tips:</h6>
                                                             <p class="mb-0">Never share your password with anyone. Use a
-                                                                unique password for this account.</p>
+                                                                unique password for this account. Consider using a password
+                                                                manager to generate and store strong passwords.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -282,8 +324,74 @@
                 }
             };
 
-            // Simple password match checker
-            $('#new_password, #new_password_confirmation').on('keyup', function() {
+            // Password strength checker
+            $('#new_password').on('keyup', function() {
+                const password = $(this).val();
+                checkPasswordStrength(password);
+                checkPasswordMatch();
+            });
+
+            // Password match checker
+            $('#new_password_confirmation').on('keyup', function() {
+                checkPasswordMatch();
+            });
+
+            function checkPasswordStrength(password) {
+                if (password.length > 0) {
+                    $('#password-strength').show();
+                } else {
+                    $('#password-strength').hide();
+                    return;
+                }
+
+                let strength = 0;
+                const requirements = {
+                    length: password.length >= 8,
+                    uppercase: /[A-Z]/.test(password),
+                    lowercase: /[a-z]/.test(password),
+                    number: /[0-9]/.test(password),
+                    special: /[!@#$%^&*]/.test(password)
+                };
+
+                // Update requirement indicators
+                $('#req-length').html(
+                    `<i class="mdi mdi-${requirements.length ? 'check-circle-outline text-success' : 'close-circle-outline text-danger'} me-2"></i> At least 8 characters`
+                );
+                $('#req-uppercase').html(
+                    `<i class="mdi mdi-${requirements.uppercase ? 'check-circle-outline text-success' : 'close-circle-outline text-danger'} me-2"></i> At least one uppercase letter`
+                );
+                $('#req-lowercase').html(
+                    `<i class="mdi mdi-${requirements.lowercase ? 'check-circle-outline text-success' : 'close-circle-outline text-danger'} me-2"></i> At least one lowercase letter`
+                );
+                $('#req-number').html(
+                    `<i class="mdi mdi-${requirements.number ? 'check-circle-outline text-success' : 'close-circle-outline text-danger'} me-2"></i> At least one number`
+                );
+                $('#req-special').html(
+                    `<i class="mdi mdi-${requirements.special ? 'check-circle-outline text-success' : 'close-circle-outline text-danger'} me-2"></i> At least one special character (!@#$%^&*)`
+                );
+
+                // Calculate strength
+                Object.values(requirements).forEach(value => {
+                    if (value) strength += 20;
+                });
+
+                // Update progress bar
+                const bar = $('#password-strength-bar');
+                bar.css('width', strength + '%');
+
+                if (strength < 40) {
+                    bar.removeClass().addClass('progress-bar bg-danger');
+                    $('#password-strength-text').text('Weak password');
+                } else if (strength < 80) {
+                    bar.removeClass().addClass('progress-bar bg-warning');
+                    $('#password-strength-text').text('Medium password');
+                } else {
+                    bar.removeClass().addClass('progress-bar bg-success');
+                    $('#password-strength-text').text('Strong password');
+                }
+            }
+
+            function checkPasswordMatch() {
                 const password = $('#new_password').val();
                 const confirm = $('#new_password_confirmation').val();
 
@@ -302,7 +410,7 @@
                     $('#password-match-error').hide();
                     $('#submit-btn').prop('disabled', false);
                 }
-            });
+            }
 
             // Prevent form submission if passwords don't match
             $('form').on('submit', function(e) {

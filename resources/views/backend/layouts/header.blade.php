@@ -30,18 +30,20 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ url('') }}/dist/assets/images/users/user-4.jpg"
-                        alt="Header Avatar">
+                    <img class="rounded-circle header-profile-user"
+                        src="{{ url('') }}/dist/assets/images/users/user-4.jpg" alt="Header Avatar">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                    <!-- Note: There's no profile edit route in your user controllers -->
+                    <!-- You may want to add this feature later -->
+                    <a class="dropdown-item" href="#">
                         <i class="mdi mdi-account-circle font-size-17 align-middle me-1"></i> My Profile
                     </a>
                     <div class="dropdown-divider"></div>
-                    <form action="{{ route('user.logout') }}" method="post" class="px-3 py-2">
+                    <form action="{{ route('user.logout') }}" method="POST" class="d-inline">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 text-danger text-decoration-none">
-                            <i class="bx bx-power-off font-size-17 align-middle me-1"></i> Logout
+                        <button type="submit" class="dropdown-item text-danger">
+                            <i class="bx bx-power-off font-size-17 align-middle me-1"></i> User Logout
                         </button>
                     </form>
                 </div>

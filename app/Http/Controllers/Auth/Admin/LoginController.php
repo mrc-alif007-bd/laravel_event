@@ -64,7 +64,7 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         // Redirect to admin login page (adjusted route)
-        return redirect()->route('admin.login')
+        return redirect()->route('login')
             ->with('success', 'You have been logged out.');
     }
 }
