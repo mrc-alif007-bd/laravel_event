@@ -103,7 +103,8 @@
                                                 <td>
                                                     <img src="{{ $venue->image ? asset($venue->image) : url('') }}/dist/assets/images/venues/default-venue.jpg"
                                                         alt="{{ $venue->name }}" class="rounded"
-                                                        style="width: 50px; height: 50px; object-fit: cover;">
+                                                        style="width: 50px; height: 50px; object-fit: cover;"
+                                                        onerror="this.onerror=null;this.src='{{ asset('dist/assets/images/events/default-event.jpg') }}';">
                                                 </td>
                                                 <td>{{ $venue->name }}</td>
                                                 <td>{{ $venue->city }}</td>
