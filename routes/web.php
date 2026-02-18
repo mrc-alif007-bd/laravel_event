@@ -1,19 +1,14 @@
 <?php
 
 use App\Http\Controllers\{
-    AdminProfileController,
-    BookingController,
-    CategoryController,
-    EventController,
-    IndexController,
-    PaymentController,
-    ProfileController,
-    UserController,
-    VenueController
+
+    HomeController,
 };
-use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
+
 use App\Http\Controllers\Auth\User\LoginController as UserLoginController;
+use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Auth\User\RegisterController as UserRegisterController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,34 +20,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Public Routes
-Route::controller(IndexController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
-    Route::get('/about', 'about')->name('about');
-    Route::get('/venue', 'venue')->name('venue');
-    Route::get('/contact', 'contact')->name('contact');
-    Route::get('/services', 'services')->name('services');
-    Route::get('/blog', 'blog')->name('blog');
-    Route::post('/', 'booking')->name('booking.store');
-});
+// Public frontend pages
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/about', [HomeController::class, 'about'])->name('home.about');
+Route::get('/blog', [HomeController::class, 'blog'])->name('home.blog');
+Route::get('/booking', [HomeController::class, 'booking'])->name('home.booking');
+Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
+Route::get('/services', [HomeController::class, 'services'])->name('home.services');
+Route::get('/venues', [HomeController::class, 'venues'])->name('home.venues');
 
-// Payment Routes
-Route::prefix('payment')->name('payment.')->controller(PaymentController::class)->group(function () {
-    Route::get('/{bookingId}', 'show')->name('show');
-    Route::post('/{bookingId}/complete', 'complete')->name('complete');
-});
-
-// Invoice Route
-Route::get('/invoice/{bookingId}', function ($bookingId) {
-    $booking = \App\Models\Booking::findOrFail($bookingId);
-    return view('invoice', compact('booking'));
-})->name('invoice');
-
-// Guest Admin Routes
-Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(function () {
-    Route::get('login', [AdminLoginController::class, 'create'])->name('login');
-    Route::post('login', [AdminLoginController::class, 'store']);
-});
 
 // Guest User Routes (Login & Register)
 Route::prefix('user')->name('user.')->middleware('guest:web')->group(function () {
@@ -65,41 +41,12 @@ Route::prefix('user')->name('user.')->middleware('guest:web')->group(function ()
     Route::post('register', [UserRegisterController::class, 'store']);
 });
 
-// Authenticated User Routes (Profile & Dashboard)
-Route::middleware('auth:web')->group(function () {
-    // Dashboard
-    Route::get('/dashboard', fn() => view('backend.dashboard'))->name('dashboard');
-    Route::get('/user/dashboard', fn() => view('backend.user_dashboard'))->name('user.dashboard');
-    Route::get('/user/my-bookings', [BookingController::class, 'myBookings'])->name('user.bookings');
-
-    // Profile Routes
-    Route::controller(ProfileController::class)->group(function () {
-        Route::get('/profile', 'edit')->name('profile.edit');
-        Route::patch('/profile', 'update')->name('profile.update');
-        Route::delete('/profile', 'destroy')->name('profile.destroy');
-    });
-
-    // User Logout
-    Route::post('/user/logout', [UserLoginController::class, 'destroy'])->name('user.logout');
+// Guest Admin Routes
+Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(function () {
+    Route::get('login', [AdminLoginController::class, 'create'])->name('login');
+    Route::post('login', [AdminLoginController::class, 'store']);
 });
 
-Route::patch('admin/venue/{id}/toggle-status', [VenueController::class, 'toggleStatus'])->name('admin.venue.toggle-status');
-// Authenticated Admin Routes
-Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
-    Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
-    Route::get('/dashboard', fn() => view('backend.admin_dashboard'))->name('dashboard');
-    Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
-    Route::put('/profile/password', [AdminProfileController::class, 'updatePassword'])->name('password.update');
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-    // Resource Routes
-    Route::resources([
-        'event' => EventController::class,
-        'category' => CategoryController::class,
-        'venue' => VenueController::class,
-        'booking' => BookingController::class
-    ]);
-});
 
 require __DIR__ . '/auth.php';
