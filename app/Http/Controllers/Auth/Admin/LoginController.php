@@ -9,40 +9,62 @@ use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
-    public function create()
+    public function __construct()
     {
-        return view('auth.admin_login');
+        // Only guests can access login; authenticated admins will be redirected
+        $this->middleware('guest:admin')->except('destroy');
     }
 
+    /**
+     * Show the admin login form
+     */
+    public function create()
+    {
+        return view('auth.admin_login'); // Blade: resources/views/auth/admin_login.blade.php
+    }
+
+    /**
+     * Handle admin login attempt
+     */
     public function store(Request $request): RedirectResponse
     {
-        
-        $request->validate([
+        // Validate login form input
+        $credentials = $request->validate([
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string'],
         ]);
 
-        if(! Auth::guard('admin')->attempt($request->only('email', 'password'), $request->boolean('remember')))
-        {
+        // Attempt login with 'admin' guard
+        $remember = $request->boolean('remember');
+
+        if (!Auth::guard('admin')->attempt($credentials, $remember)) {
+            // Login failed
             return back()
                 ->withErrors(['email' => trans('auth.failed')])
                 ->withInput($request->except('password'));
         }
 
+        // Regenerate session to prevent fixation
         $request->session()->regenerate();
 
-        return redirect()->route('admin.dashboard');
+        // Redirect to admin dashboard
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Logged in successfully.');
     }
 
+    /**
+     * Logout the admin
+     */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('admin')->logout();
 
+        // Invalidate session and regenerate CSRF token
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        // Redirect to admin login page (adjusted route)
+        return redirect()->route('admin.login')
+            ->with('success', 'You have been logged out.');
     }
-
 }

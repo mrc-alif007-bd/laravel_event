@@ -14,29 +14,14 @@
                     </a>
                 </li>
 
+                <!-- Profile -->
                 <li>
-                    <a href="{{ route('admin.profile.edit') }}" class="waves-effect">
+                    <a href="{{ route('admin.profile.edit', Auth::guard('admin')->id()) }}" class="waves-effect">
                         <i class="ti-user"></i>
                         <span>My Profile</span>
                     </a>
                 </li>
-
-                <!-- Category Menu with Create Link -->
-                <li class="menu-title">Category Management</li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-folder"></i>
-                        <span>Categories</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.category.index') }}"><i class="ti-list"></i> All Event Types</a>
-                        </li>
-                        <li><a href="{{ route('admin.category.create') }}"><i class="ti-plus"></i> Create Event Type</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- Events Menu with Create Link -->
+                <!-- Events Menu -->
                 <li class="menu-title">Event Management</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -44,12 +29,12 @@
                         <span>Events</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.event.index') }}"><i class="ti-list"></i> All Events</a></li>
-                        <li><a href="{{ route('admin.event.create') }}"><i class="ti-plus"></i> Create Event</a></li>
+                        <li><a href="{{ route('admin.events.index') }}"><i class="ti-list"></i> All Events</a></li>
+                        <li><a href="{{ route('admin.events.create') }}"><i class="ti-plus"></i> Create Event</a></li>
                     </ul>
                 </li>
 
-                <!-- Venues Menu with Create Link -->
+                <!-- Venues Menu -->
                 <li class="menu-title">Venue Management</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -57,20 +42,39 @@
                         <span>Venues</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.venue.index') }}"><i class="ti-list"></i> All Venues</a></li>
-                        <li><a href="{{ route('admin.venue.create') }}"><i class="ti-plus"></i> Create Venue</a></li>
+                        <li><a href="{{ route('admin.venues.index') }}"><i class="ti-list"></i> All Venues</a></li>
+                        <li><a href="{{ route('admin.venues.create') }}"><i class="ti-plus"></i> Create Venue</a></li>
                     </ul>
                 </li>
 
                 <!-- Bookings Menu -->
                 <li class="menu-title">Booking Management</li>
                 <li>
-                    <a href="{{ route('admin.booking.index') }}" class="waves-effect">
+                    <a href="{{ route('admin.bookings.index') }}" class="waves-effect">
                         <i class="ti-ticket"></i>
                         <span>Bookings</span>
                     </a>
                 </li>
 
+                <!-- Payments Menu -->
+                <li class="menu-title">Payment Management</li>
+                <li>
+                    <a href="{{ route('admin.payments.index') }}" class="waves-effect">
+                        <i class="ti-credit-card"></i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+
+                <!-- Reviews Menu -->
+                <li class="menu-title">Review Management</li>
+                <li>
+                    <a href="{{ route('admin.reviews.index') }}" class="waves-effect">
+                        <i class="ti-star"></i>
+                        <span>Reviews</span>
+                    </a>
+                </li>
+
+                <!-- User Management -->
                 <li class="menu-title">User Management</li>
                 <li>
                     <a href="{{ route('admin.users.index') }}" class="waves-effect">
@@ -79,23 +83,14 @@
                     </a>
                 </li>
 
-                <!-- Reports Section (Optional) -->
-                <li class="menu-title">Reports</li>
-                {{-- <li>
-                    <a href="{{ route('admin.reports') }}" class="waves-effect">
-                        <i class="ti-bar-chart"></i>
-                        <span>Reports</span>
+                <!-- Coupons Menu -->
+                <li class="menu-title">Discount Management</li>
+                <li>
+                    <a href="{{ route('admin.coupons.index') }}" class="waves-effect">
+                        <i class="ti-tag"></i>
+                        <span>Coupons</span>
                     </a>
-                </li> --}}
-
-                <!-- Settings (Optional) -->
-                <li class="menu-title">Settings</li>
-                {{-- <li>
-                    <a href="{{ route('admin.settings') }}" class="waves-effect">
-                        <i class="ti-settings"></i>
-                        <span>Settings</span>
-                    </a>
-                </li> --}}
+                </li>
             </ul>
         </div>
     </div>

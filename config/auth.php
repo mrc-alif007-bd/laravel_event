@@ -40,9 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users',
         ],
     ],
 
@@ -68,15 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // Note: We're using the same users table for both regular users and admins
+        // The 'role' column in the users table distinguishes between user types
+        // Therefore, a separate 'admins' provider is not needed
     ],
 
     /*
@@ -105,6 +106,10 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // Password reset for admins uses the same users provider since they're
+        // stored in the same table. The 'role' column will determine if the
+        // user is an admin when resetting password through admin-specific flows.
     ],
 
     /*
