@@ -276,6 +276,62 @@
             </div>
         </section>
         <!-- inner-blog-end -->
+        <!-- instagram-area -->
+        <section class="instagram-area p-relative fix pb-120">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="instagram-box">
+                            <img src="{{ url('') }}/front_assets/img/bg/ins-img-01.png" alt="img">
+                            <div class="hover"><a href="{{ url('') }}/front_assets/#"><img
+                                        src="{{ url('') }}/front_assets/img/icon/instagram-icon.png"
+                                        alt="img"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="instagram-box">
+                            <img src="{{ url('') }}/front_assets/img/bg/ins-img-02.png" alt="img">
+                            <div class="hover"><a href="{{ url('') }}/front_assets/#"><img
+                                        src="{{ url('') }}/front_assets/img/icon/instagram-icon.png"
+                                        alt="img"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="instagram-box">
+                            <img src="{{ url('') }}/front_assets/img/bg/ins-img-03.png" alt="img">
+                            <div class="hover"><a href="{{ url('') }}/front_assets/#"><img
+                                        src="{{ url('') }}/front_assets/img/icon/instagram-icon.png"
+                                        alt="img"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="instagram-box">
+                            <img src="{{ url('') }}/front_assets/img/bg/ins-img-04.png" alt="img">
+                            <div class="hover"><a href="{{ url('') }}/front_assets/#"><img
+                                        src="{{ url('') }}/front_assets/img/icon/instagram-icon.png"
+                                        alt="img"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="instagram-box">
+                            <img src="{{ url('') }}/front_assets/img/bg/ins-img-05.png" alt="img">
+                            <div class="hover"><a href="{{ url('') }}/front_assets/#"><img
+                                        src="{{ url('') }}/front_assets/img/icon/instagram-icon.png"
+                                        alt="img"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="instagram-box">
+                            <img src="{{ url('') }}/front_assets/img/bg/ins-img-06.png" alt="img">
+                            <div class="hover"><a href="{{ url('') }}/front_assets/#"><img
+                                        src="{{ url('') }}/front_assets/img/icon/instagram-icon.png"
+                                        alt="img"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- instagram-area-end -->
         <!-- newslater-area -->
         <section class="newslater-area">
             <div class="container p-relative">

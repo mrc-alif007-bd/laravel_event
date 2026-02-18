@@ -211,15 +211,6 @@ class VenueController extends Controller
 
             $venueName = $venue->name; // Store for success message
 
-            // Check if venue has any associated events (if you have events table)
-            // Uncomment this if you have events relationship
-            /*
-            if ($venue->events()->count() > 0) {
-                return redirect()->route('admin.venue.index')
-                    ->with('error', 'Cannot delete venue because it has associated events.');
-            }
-            */
-
             // Delete venue image if it exists and is not the default
             if ($venue->image != 'venue_image/noimage.jpg' && File::exists(public_path($venue->image))) {
                 try {
@@ -269,5 +260,14 @@ class VenueController extends Controller
             Log::error('Error checking venue status: ' . $e->getMessage());
             return response()->json(['error' => 'Failed to check venue status'], 500);
         }
+    }
+
+    public function toggleStatus(Request $request, $id)
+    {
+        $venue = Venue::findOrFail($id);
+        $venue->status = $venue->status === 'active' ? 'inactive' : 'active';
+        $venue->save();
+
+        return redirect()->back()->with('success', 'Venue status updated successfully.');
     }
 }
