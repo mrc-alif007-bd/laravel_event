@@ -18,8 +18,16 @@ class EventFactory extends Factory
     {
         $venue = Venue::inRandomOrder()->first();
         $category = Category::inRandomOrder()->first();
+
+        // Start date for the event
         $startDate = $this->faker->dateTimeBetween('+1 days', '+60 days');
+
+        // Duration in hours
         $durationHours = $this->faker->numberBetween(1, 5);
+
+        // Calculate end time properly
+        $endDate = (clone $startDate)->modify('+' . $durationHours . ' hours');
+
         $ticketCount = $this->faker->numberBetween(50, 500);
         $isPaid = $this->faker->boolean(70);
 
@@ -30,7 +38,7 @@ class EventFactory extends Factory
             'category_id' => $category ? $category->id : null,
             'event_date' => $startDate->format('Y-m-d'),
             'start_time' => $startDate->format('H:i:s'),
-            'end_time' => $this->faker->dateTimeBetween($startDate, '+' . $durationHours . ' hours')->format('H:i:s'),
+            'end_time' => $endDate->format('H:i:s'),
             'is_paid' => $isPaid,
             'price' => $isPaid ? $this->faker->randomFloat(2, 10, 200) : 0,
             'total_tickets' => $ticketCount,
