@@ -18,7 +18,8 @@ use App\Http\Controllers\Admin\{
     BookingController as AdminBookingController,
     PaymentController as AdminPaymentController,
     ReviewController as AdminReviewController,
-    CouponController as AdminCouponController
+    CouponController as AdminCouponController,
+    ProfileController as AdminProfileController,
 };
 
 // User controllers
@@ -63,6 +64,9 @@ Route::prefix('user')->name('user.')->middleware('guest:web')->group(function ()
     // Register
     Route::get('register', [UserRegisterController::class, 'create'])->name('register');
     Route::post('register', [UserRegisterController::class, 'store']);
+
+    // Logout
+    Route::post('logout', [UserLoginController::class, 'destroy'])->name('logout');
 });
 
 /*
@@ -73,6 +77,9 @@ Route::prefix('user')->name('user.')->middleware('guest:web')->group(function ()
 Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(function () {
     Route::get('login', [AdminLoginController::class, 'create'])->name('login');
     Route::post('login', [AdminLoginController::class, 'store']);
+
+    // Logout
+    Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
 });
 
 /*
@@ -105,6 +112,18 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
 
     // Coupons Management
     Route::resource('coupons', AdminCouponController::class);
+
+    // Profile Management - Use explicit routes instead of resource
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [AdminProfileController::class, 'index'])->name('index');
+        Route::get('/edit', [AdminProfileController::class, 'edit'])->name('edit');
+        Route::put('/update', [AdminProfileController::class, 'update'])->name('update');
+        Route::get('/change-password', [AdminProfileController::class, 'changePasswordForm'])->name('change-password');
+        Route::post('/update-password', [AdminProfileController::class, 'updatePassword'])->name('update-password');
+        Route::delete('/remove-avatar', [AdminProfileController::class, 'removeAvatar'])->name('remove-avatar');
+        Route::post('/update-notifications', [AdminProfileController::class, 'updateNotifications'])->name('update-notifications');
+        Route::get('/activity', [AdminProfileController::class, 'activityLog'])->name('activity');
+    });
 });
 
 /*
@@ -131,6 +150,9 @@ Route::prefix('user')->name('user.')->middleware(['auth:web'])->group(function (
 
     // Reviews
     Route::resource('reviews', UserReviewController::class)->except(['edit', 'update']);
+
+    // Profile Management
+    Route::resource('profile', UserProfileController::class)->only(['edit', 'update']);
 });
 
 require __DIR__ . '/auth.php';
