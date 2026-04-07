@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\{
-    HomeController
-};
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
-// Auth controllers
+// ==============================================
+// AUTH CONTROLLERS
+// ==============================================
 use App\Http\Controllers\Auth\User\LoginController as UserLoginController;
 use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Auth\User\RegisterController as UserRegisterController;
 
-// Admin controllers
+// ==============================================
+// ADMIN CONTROLLERS
+// ==============================================
 use App\Http\Controllers\Admin\{
     DashboardController as AdminDashboardController,
     UserController as AdminUserController,
@@ -22,7 +25,9 @@ use App\Http\Controllers\Admin\{
     ProfileController as AdminProfileController,
 };
 
-// User controllers
+// ==============================================
+// USER CONTROLLERS
+// ==============================================
 use App\Http\Controllers\User\{
     DashboardController as UserDashboardController,
     ProfileController as UserProfileController,
@@ -32,17 +37,9 @@ use App\Http\Controllers\User\{
     ReviewController as UserReviewController
 };
 
-use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Public / Guest Routes
-|--------------------------------------------------------------------------
-|
-| Pages that anyone can access without login
-|
-*/
-
+// ==============================================
+// PUBLIC / GUEST ROUTES
+// ==============================================
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/blog', [HomeController::class, 'blog'])->name('home.blog');
@@ -52,72 +49,52 @@ Route::get('/services', [HomeController::class, 'services'])->name('home.service
 Route::get('/venues', [HomeController::class, 'venues'])->name('home.venues');
 Route::get('/events', [HomeController::class, 'venues'])->name('events.index');
 Route::get('/event/{id}', [HomeController::class, 'showEvent'])->name('events.show');
-Route::post('/event/book/{id}', [App\Http\Controllers\BookingController::class, 'store'])->name('events.book');
+
+// ==============================================
+// BOOKING & PAYMENT ROUTES (PUBLIC)
+// ==============================================
 Route::post('/event/book/{id}', [App\Http\Controllers\BookingController::class, 'store'])->name('events.book');
 Route::get('/payment/{bookingId}', [App\Http\Controllers\BookingController::class, 'paymentPage'])->name('payment.page');
 Route::post('/payment/process/{bookingId}', [App\Http\Controllers\BookingController::class, 'processDummyPayment'])->name('payment.process');
 Route::get('/booking/confirmation/{bookingId}', [App\Http\Controllers\BookingController::class, 'confirmation'])->name('booking.confirmation');
 Route::get('/booking/ticket/{bookingId}', [App\Http\Controllers\BookingController::class, 'showDigitalTicket'])->name('booking.ticket');
 Route::get('/booking/ticket/{bookingId}/download', [App\Http\Controllers\BookingController::class, 'downloadTicket'])->name('ticket.download');
-/*
-|--------------------------------------------------------------------------
-| Guest User Routes (Login & Register)
-|--------------------------------------------------------------------------
-*/
+
+// ==============================================
+// GUEST USER ROUTES (LOGIN & REGISTER)
+// ==============================================
 Route::prefix('user')->name('user.')->middleware('guest:web')->group(function () {
-    // Login
     Route::get('login', [UserLoginController::class, 'create'])->name('login');
     Route::post('login', [UserLoginController::class, 'store']);
-
-    // Register
     Route::get('register', [UserRegisterController::class, 'create'])->name('register');
     Route::post('register', [UserRegisterController::class, 'store']);
 });
 
-/*
-|--------------------------------------------------------------------------
-| Guest Admin Routes
-|--------------------------------------------------------------------------
-*/
+// ==============================================
+// GUEST ADMIN ROUTES
+// ==============================================
 Route::prefix('admin')->name('admin.')->middleware('guest:admin')->group(function () {
     Route::get('login', [AdminLoginController::class, 'create'])->name('login');
     Route::post('login', [AdminLoginController::class, 'store']);
 });
 
-/*
-|--------------------------------------------------------------------------
-| Authenticated Admin Routes
-|--------------------------------------------------------------------------
-*/
+// ==============================================
+// AUTHENTICATED ADMIN ROUTES
+// ==============================================
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function () {
-
     Route::post('logout', [AdminLoginController::class, 'destroy'])->name('logout');
-
-    // Admin Dashboard
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-    // Users Management
+    // Management Resources
     Route::resource('users', AdminUserController::class);
-
-    // Events Management
     Route::resource('events', AdminEventController::class);
-
-    // Venues Management
     Route::resource('venues', AdminVenueController::class);
-
-    // Bookings Management
     Route::resource('bookings', AdminBookingController::class);
-
-    // Payments Management
     Route::resource('payments', AdminPaymentController::class);
-
-    // Reviews Management
     Route::resource('reviews', AdminReviewController::class)->only(['index', 'show', 'destroy']);
-
-    // Coupons Management
     Route::resource('coupons', AdminCouponController::class);
 
-    // Profile Management - Use explicit routes instead of resource
+    // Admin Profile Management
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/', [AdminProfileController::class, 'index'])->name('index');
         Route::get('/edit', [AdminProfileController::class, 'edit'])->name('edit');
@@ -130,33 +107,20 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
     });
 });
 
-/*
-|--------------------------------------------------------------------------
-| Authenticated User Routes
-|--------------------------------------------------------------------------
-*/
+// ==============================================
+// AUTHENTICATED USER ROUTES
+// ==============================================
 Route::prefix('user')->name('user.')->middleware(['auth:web'])->group(function () {
-
-
-    // Logout
     Route::post('logout', [UserLoginController::class, 'destroy'])->name('logout');
-
-    // User Dashboard
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
 
-    // Events (view only)
+    // User Resources
     Route::resource('events', UserEventController::class)->only(['index', 'show']);
-
-    // Bookings
     Route::resource('bookings', UserBookingController::class)->except(['edit', 'update', 'destroy']);
-
-    // Payments
     Route::resource('payments', UserPaymentController::class)->only(['index', 'show']);
-
-    // Reviews
     Route::resource('reviews', UserReviewController::class)->except(['edit', 'update']);
 
-    // Profile Management - Use explicit routes instead of resource
+    // User Profile Management
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/', [UserProfileController::class, 'index'])->name('index');
         Route::get('/edit', [UserProfileController::class, 'edit'])->name('edit');
@@ -169,4 +133,7 @@ Route::prefix('user')->name('user.')->middleware(['auth:web'])->group(function (
     });
 });
 
+// ==============================================
+// ADDITIONAL AUTH ROUTES
+// ==============================================
 require __DIR__ . '/auth.php';

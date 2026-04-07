@@ -8,12 +8,28 @@ use App\Models\Coupon;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Barryvdh\DomPDF\Facade\Pdf; // Add this if you want PDF download (install: composer require barryvdh/laravel-dompdf)
 
 class BookingController extends Controller
 {
+    /**
+     * Add middleware to require authentication for all booking methods
+     */
+    public function __construct()
+    {
+        // This ensures user must be logged in for all methods except any you specify
+        $this->middleware('auth:web')->except([]);
+        // Or if you want to allow guests to view tickets but not book:
+        // $this->middleware('auth:web')->only(['store', 'paymentPage', 'processDummyPayment']);
+    }
+
     public function store(Request $request, $id)
     {
+        // Check if user is logged in
+        if (!auth()->check()) {
+            return redirect()->route('user.login')
+                ->with('error', 'Please login to book tickets.');
+        }
+
         $event = Event::findOrFail($id);
 
         // Validate booking
@@ -82,14 +98,36 @@ class BookingController extends Controller
 
     public function paymentPage($bookingId)
     {
+        // Check if user is logged in
+        if (!auth()->check()) {
+            return redirect()->route('user.login')
+                ->with('error', 'Please login to continue with payment.');
+        }
+
         $booking = Booking::with('event')->findOrFail($bookingId);
+
+        // Optional: Ensure the booking belongs to the logged-in user
+        if ($booking->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized access to this booking.');
+        }
 
         return view('frontend.payment', compact('booking'));
     }
 
     public function processDummyPayment(Request $request, $bookingId)
     {
+        // Check if user is logged in
+        if (!auth()->check()) {
+            return redirect()->route('user.login')
+                ->with('error', 'Please login to process payment.');
+        }
+
         $booking = Booking::with('event')->findOrFail($bookingId);
+
+        // Optional: Ensure the booking belongs to the logged-in user
+        if ($booking->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized access to this booking.');
+        }
 
         // Validate payment method
         $request->validate([
@@ -123,7 +161,15 @@ class BookingController extends Controller
 
     public function showDigitalTicket($bookingId)
     {
+        // Optional: Allow viewing tickets without login (with verification)
         $booking = Booking::with(['event', 'payments'])->findOrFail($bookingId);
+
+        // If you want to protect ticket viewing:
+        if (auth()->check() && $booking->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized access to this ticket.');
+        }
+
+        // Or allow anyone with the direct link (more convenient for users)
 
         return view('frontend.digital-ticket', compact('booking'));
     }
@@ -131,9 +177,20 @@ class BookingController extends Controller
     // Optional: Download PDF ticket
     public function downloadTicket($bookingId)
     {
+        // Check if user is logged in
+        if (!auth()->check()) {
+            return redirect()->route('user.login')
+                ->with('error', 'Please login to download your ticket.');
+        }
+
         $booking = Booking::with(['event', 'payments'])->findOrFail($bookingId);
 
-        $pdf = Pdf::loadView('frontend.ticket-pdf', compact('booking'));
-        return $pdf->download('ticket-' . $booking->booking_code . '.pdf');
+        // Ensure the booking belongs to the logged-in user
+        if ($booking->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized access to this ticket.');
+        }
+
+        // $pdf = Pdf::loadView('frontend.ticket-pdf', compact('booking'));
+        // return $pdf->download('ticket-' . $booking->booking_code . '.pdf');
     }
 }

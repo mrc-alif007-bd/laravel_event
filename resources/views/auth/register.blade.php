@@ -189,7 +189,7 @@
 
                                     <div class="mt-4 text-center">
                                         <p class="mb-0">Already have an account?
-                                            <a href="{{ route('user.login') }}" class="fw-medium text-primary">
+                                            <a href="{{ route('login') }}" class="fw-medium text-primary">
                                                 Sign in
                                             </a>
                                         </p>
